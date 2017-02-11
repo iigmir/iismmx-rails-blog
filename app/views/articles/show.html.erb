@@ -8,7 +8,7 @@
     </section>
 
     <section class="col col-12">
-      <p> You can <a href="/articles/<%= a.id %>/edit"> edit this article </a>,
+      <p> You can <%= link_to 'edit this article',  edit_article_url(a.id) %>
           or <%= link_to 'delete Posting',  article_path(a.id) , method: :delete %>. </p>
       <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
     </section>
