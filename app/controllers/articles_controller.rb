@@ -21,12 +21,19 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   def update
-    Article.update( art_params )
+    @article = Article.find(params[:id])
+    @article.update_attributes(art_params)
+    
     redirect_to articles_path
     #  What's different between:
+    #  Article.update( art_params )
+    
+    #  And:
     #  @job = Job.find(params[:id])
     #  @job.update_attributes(job_params)
-    #  redirect_to jobs_path
+    
+    #  Fucking! Fucking different! Article.update( art_params ) may update EVERYTHING!!!!!
+    
   end
 
   # D for CRUD
