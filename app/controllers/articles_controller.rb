@@ -1,8 +1,13 @@
 class ArticlesController < ApplicationController
+  # R for CRUD
   def index
     @articles = Article.all
   end
+  def show
+    @article = Article.find(params[:id])
+  end
 
+  # C for CRUD
   def new
     @article = Article.new
   end
@@ -11,6 +16,7 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  # U for CRUD
   def edit
     @article = Article.find(params[:id])
   end
@@ -23,6 +29,7 @@ class ArticlesController < ApplicationController
     #  redirect_to jobs_path
   end
 
+  # D for CRUD
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -30,7 +37,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
   def art_params
     params.require(:article).permit(:title, :context)
   end
