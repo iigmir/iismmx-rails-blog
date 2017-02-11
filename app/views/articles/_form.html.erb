@@ -20,7 +20,6 @@
 <% else %>
   <p class="text-center">
   Hello there guest,
-   you need to <%= link_to "sign up", new_user_registration_path %>,
-   or <%= link_to "login", new_user_session_path  %> to do action in this page.
+   you need to <%#= link_to "sign up", new_user_registration_path %> <%= link_to "login", new_user_session_path  %> to do action in this page.
   </p>
 <% end %>

@@ -1,29 +1,35 @@
-<h2>Sign up</h2>
+<h1 class="text-center">Sign up</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <table>
+    <thead class="text-center">
+      <tr>
+        <th> Sorry, don't accept sign up is currently. </th>
+        <th> <%= devise_error_messages! %> </th>
+      </tr>
+    </thead>
+    <tr>
+      <td> <%= f.label :email %> </td>
+      <td> <%= f.email_field :email, autofocus: true, disabled:true %> </td>
+    </tr>
+    <tr>
+      <td> <%= f.label :password %> </td>
+      <td>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", disabled:true %>
+      </td>
+    </tr>
+    <tr>
+      <td> <%= f.label :password_confirmation %> </td>
+      <td> <%= f.password_field :password_confirmation, autocomplete: "off", disabled:true %> </td>
+    </tr>
+    <tr>
+      <td> <%#= f.submit "Sign up", disabled:true %> </td>
+      <td> <%= render "devise/shared/links" %> </td>
+    </tr>
+  </table>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

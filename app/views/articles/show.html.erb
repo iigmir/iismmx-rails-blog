@@ -3,12 +3,16 @@
 <main>
   <article class="row">
     <section class="col col-12">
+      <p class="text-center"><b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b></p>
+    </section>
+    
+    <section class="col col-12">
       <h2> <%= a.title   %> </h2>
       <p>  <%= a.context %> </p>
     </section>
-
+    
     <section class="col col-12">
-      <p>
+      <p class="text-center">
           <% if user_signed_in? %>
               Hello there <strong><%= current_user.email %></strong>.
               Want to <a class="text-center" href="/articles/new">add new article</a>,
@@ -16,12 +20,10 @@
               or <%= link_to 'delete Posting',  article_path(a.id) , method: :delete %> ?
               <span> And of course, you can <%= link_to "logout", destroy_user_session_path, method: :delete %>. </span>
           <% else %>
-              Hello there guest?
-              Want to <%= link_to "sign up", new_user_registration_path %>,
-              or <%= link_to "login", new_user_session_path  %>?
+              Hello there guest,
+              want to <%#= link_to "sign up", new_user_registration_path %> <%= link_to "login", new_user_session_path  %>?
           <% end %>
       </p>
-      <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
     </section>
   </article>
 </main>
