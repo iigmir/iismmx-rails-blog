@@ -6,7 +6,10 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by_id(params[:id])
+    if @article == nil
+      redirect_to articles_path
+    end
   end
 
   # C for CRUD
@@ -26,7 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update_attributes(art_params)
     
-    redirect_to articles_path
+    redirect_to article_path(@article)
     #  What's different between:
     #  Article.update( art_params )
     

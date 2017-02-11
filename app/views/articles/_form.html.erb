@@ -12,7 +12,13 @@
         </tr>
         <tr>
           <td> <%= m.submit %> </td>
-          <td> <%= link_to 'Discard ANY change AND go to index.', articles_url ,method: :get %> </td>
+          <td>
+          <% if m == nil %>
+            <%= link_to 'Discard ANY change AND go to index.', articles_path ,method: :get %>
+          <% else %>
+            <%= link_to 'Discard ANY change AND go to article.', @article ,method: :get %>
+          <% end %>
+          </td>
         </tr>
       </table>
     </main>
