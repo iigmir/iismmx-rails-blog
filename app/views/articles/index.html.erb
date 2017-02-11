@@ -2,13 +2,10 @@
 
 <% @articles.each do |a| %>
 <article>
-  <h2> <%= a.title   %> </h2>
+  <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
   <p>  <%= a.context %> </p>
-  <p>
-    <a href="/articles/<%= a.id %>/edit" title="edit this article"> Edit this article </a>
-    , or
-   <%= link_to 'Delete Posting',  article_path(a.id) , method: :delete %> 
-  </p>
+  <p>  <a href="/articles/<%= a.id %>/edit" title="edit this article"> Edit this article </a>, or <%= link_to 'Delete Posting',  article_path(a.id) , method: :delete %>  </p>
+  <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
 </article>
 <% end %>
 
