@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  # Auth setting
+  
   # R for CRUD
   def index
     @articles = Article.all
@@ -9,7 +11,6 @@ class ArticlesController < ApplicationController
 
   # C for CRUD
   def new
-    before_action :authenticate_user!
     @article = Article.new
   end
   def create
