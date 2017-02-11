@@ -19,8 +19,8 @@
     </section>
     
     <section class="col col-12">
-      <h2> <%= a.title   %> </h2>
-      <p>  <%= a.context %> </p>
+      <h2> <%= a.title %> </h2>
+      <p>  <%= sanitize(a.context) %> </p>
     </section>
   </article>
 </main>
