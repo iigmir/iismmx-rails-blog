@@ -1,0 +1,16 @@
+<%= form_for @article do |m| %>
+  <table>
+    <tr>
+      <td> <%= m.label :title %> </td>
+      <td> <%= m.text_field :title %> </td>
+    </tr>
+    <tr>
+      <td> <%= m.label :context %> </td>
+      <td> <%= m.text_area :context %> </td>
+    </tr>
+    <tr>
+      <td> <%= m.submit %> </td>
+      <td></td>
+    </tr>
+  </table>
+<% end %>
