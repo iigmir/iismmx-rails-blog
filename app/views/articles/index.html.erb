@@ -1,8 +1,8 @@
 <style>
-  li{ margin-bottom:1rem; }
-  li h2 {  display:inline; }
-  li span {  padding:0.5rem; }
+  li  { margin-bottom:1rem; }
+  li span { padding:0.5rem; }
   li span:hover{ background-color:#FFFFFF;  }
+  @media (min-width:700px){ li span br{ display:none; } }
 </style>
 
 <h1 class="text-center">My blog</h1>
@@ -11,9 +11,9 @@
 <main class="row align-center">
   <ul class="col col-12 unstyled">
   <% @articles.each do |a| %>
-  <li>
+  <li class="text-center">
     <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
-    <span> Created: <%= a.created_at %>, Last updated: <%= a.updated_at %> </span>
+    <span> Created: <%= a.created_at %>,<br/> Last updated: <%= a.updated_at %> </span>
   </li>
   <% end %>
   </ul>
