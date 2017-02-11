@@ -1,18 +1,26 @@
-<%= form_for @article do |m| %>
-<main>
-  <table>
-    <tr>
-      <td> <%= m.label :title %> </td>
-      <td> <%= m.text_field :title %> </td>
-    </tr>
-    <tr>
-      <td> <%= m.label :context %> </td>
-      <td> <%= m.text_area :context %> </td>
-    </tr>
-    <tr>
-      <td> <%= m.submit %> </td>
-      <td> </td>
-    </tr>
-  </table>
-</main>
+<% if user_signed_in? %>
+    <%= form_for @article do |m| %>
+    <main>
+      <table>
+        <tr>
+          <td> <%= m.label :title %> </td>
+          <td> <%= m.text_field :title %> </td>
+        </tr>
+        <tr>
+          <td> <%= m.label :context %> </td>
+          <td> <%= m.text_area :context %> </td>
+        </tr>
+        <tr>
+          <td> <%= m.submit %> </td>
+          <td> <%= link_to 'Discard ANY change AND go to index.', articles_url ,method: :get %> </td>
+        </tr>
+      </table>
+    </main>
+    <% end %>
+<% else %>
+  <p class="text-center">
+  Hello there guest,
+   you need to <%= link_to "sign up", new_user_registration_path %>,
+   or <%= link_to "login", new_user_session_path  %> to do action in this page.
+  </p>
 <% end %>

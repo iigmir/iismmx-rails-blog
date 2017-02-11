@@ -6,14 +6,7 @@
 </style>
 
 <h1 class="text-center">My blog</h1>
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <a class="text-center" href="/articles/new">New article</a> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+<p class="text-center"> <%= render "indexauth" %> </p>
 
 <main class="row align-center">
   <ul class="col col-12 unstyled">
