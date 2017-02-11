@@ -1,10 +1,19 @@
-<h1>My blog</h1>
+<style>
+  li{ margin-bottom:1rem; }
+  li h2 {  display:inline; }
+  li span {  padding:0.5rem; }
+  li span:hover{ background-color:#FFFFFF;  }
+</style>
+<h1 class="text-center">My blog</h1>
+<a class="text-center" href="/articles/new">New article</a>
 
-<% @articles.each do |a| %>
-<article>
-  <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
-  <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
-</article>
-<% end %>
-
-<a href="/articles/new">New article</a>
+<main class="row align-center">
+  <ul class="col col-12 unstyled">
+  <% @articles.each do |a| %>
+  <li>
+    <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
+    <span> Created: <%= a.created_at %>, Last updated: <%= a.updated_at %> </span>
+  </li>
+  <% end %>
+  </ul>
+</main>

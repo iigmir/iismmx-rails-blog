@@ -13,7 +13,23 @@
  *= require kube
  *= require_self
  */
- 
-h2 a {
-    color: #003399;
+body
+{
+  background-color: #d6ccca;
+}
+
+main
+{
+  max-width:960px;
+  margin:0 auto;
+}
+
+h1
+{
+  margin-top:1rem;
+}
+
+h1 a, h2 a
+{
+  color: #003399;
 }

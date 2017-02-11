@@ -1,13 +1,16 @@
-<h1> <%= link_to 'My Blog',articles_url,method: :get %> </h1>
+<h1 class="text-center"> <%= link_to 'My blog',articles_url,method: :get %> </h1>
 <% a = @article %>
-<article>
-  <section>
-    <h2> <%= a.title   %> </h2>
-    <p>  <%= a.context %> </p>
-  </section>
+<main>
+  <article class="row">
+    <section class="col col-12">
+      <h2> <%= a.title   %> </h2>
+      <p>  <%= a.context %> </p>
+    </section>
 
-  <section>
-    <p> You can <a href="/articles/<%= a.id %>/edit"> edit this article </a>, or <%= link_to 'delete Posting',  article_path(a.id) , method: :delete %>. </p>
-    <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
-  </section>
-</article>
+    <section class="col col-12">
+      <p> You can <a href="/articles/<%= a.id %>/edit"> edit this article </a>,
+          or <%= link_to 'delete Posting',  article_path(a.id) , method: :delete %>. </p>
+      <p> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </p>
+    </section>
+  </article>
+</main>
