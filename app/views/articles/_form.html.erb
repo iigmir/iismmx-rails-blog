@@ -8,7 +8,7 @@
         </tr>
         <tr>
           <td> <%= m.label :context %> </td>
-          <td> <%= m.text_area :context %> </td>
+          <td> <%= m.text_area :context, size: '60x20' %> </td>
         </tr>
         <tr>
           <td> <%= m.submit %> </td>
@@ -26,7 +26,7 @@
 <% else %>
   <p class="text-center">
   Hello there guest, to do actions in this page,
-   you need to <%#= link_to "sign up", new_user_registration_path %> <%= link_to "login", new_user_session_path  %>,
+   you need to <%#= link_to "sign up,", new_user_registration_path %> <%= link_to "login", new_user_session_path  %>,
    or you want to <%= link_to 'go home',articles_url,method: :get %>?
   </p>
 <% end %>
