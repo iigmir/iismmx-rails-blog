@@ -1,22 +1,46 @@
+<style>
+    .checkarea td *{display:inline-block;}
+</style>
+<script>
+    $(document).ready(function(e)
+    {
+        var detectionElement = $('#checked_twice');
+        if (detectionElement.get(0)) 
+        {
+            $(detectionElement).click( function() 
+            {
+                var target = $("#highrisk input");
+                target.prop('disabled', $(this).is(':checked') == false);
+            });
+        }
+    });
+</script>
+
 <% if user_signed_in? %>
     <%= form_for @article do |m| %>
     <main>
       <table>
         <tr>
           <td> <%= m.label :title %> </td>
-          <td> <%= m.text_field :title %> </td>
+          <td> <%= m.text_field :title, :required => true %> </td>
         </tr>
         <tr>
           <td> <%= m.label :context %> </td>
-          <td> <%= m.text_area :context, size: '60x20' %> </td>
+          <td> <%= m.text_area :context, size: '60x20', :required => true %> </td>
         </tr>
-        <tr>
-          <td> <%= m.submit %> </td>
+        <tr class="checkarea">
+          <td colspan="2">
+            <%= check_box( "checked", "twice" ) %>
+            <label for="checked_twice">I assume that I truly want to do following action.</label>
+          </td>
+        </tr>
+        <tr id="highrisk">
+          <td> <%= m.submit "Submit article", disabled:true %> </td>
           <td>
           <% if m == nil %>
-            <%= link_to 'Discard ANY change AND go to index.', articles_path ,method: :get %>
+            <%= button_to 'Discard ANY change AND go to index.', articles_path ,method: :get, disabled:true %>
           <% else %>
-            <%= link_to 'Discard ANY change AND go to article.', @article ,method: :get %>
+            <%= button_to 'Discard ANY change AND go to article.', @article ,method: :get, disabled:true %>
           <% end %>
           </td>
         </tr>
