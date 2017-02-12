@@ -21,11 +21,7 @@
         <tr id="highrisk">
           <td> <%= m.submit "Submit article" %> </td>
           <td>
-          <% if m == nil %>
-            <%= link_to 'Cancel this new article', articles_path %>
-          <% else %>
-            <%= link_to 'Cancel', articles_path %>
-          <% end %>
+              <%= link_to 'Cancel', @article %>
           </td>
         </tr>
       </table>
