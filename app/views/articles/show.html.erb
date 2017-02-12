@@ -2,7 +2,7 @@
 <% a = @article %>
 <main>
   <article class="row">
-    <section class="col col-12">
+    <section class="col col-12" class="intros">
       <p class="text-center">
         <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
         <% if user_signed_in? %>
@@ -17,9 +17,8 @@
         <% end %>
       </p>
     </section>
-    
-    <section class="col col-12">
-      <h2> <%= a.title %> </h2>
+    <h2> <%= a.title %> </h2>
+    <section class="col col-12 context">
       <%= sanitize(a.context) %>
     </section>
   </article>
