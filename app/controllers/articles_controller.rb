@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   
   # R for CRUD
   def index
-    @articles = Article.all
+    @articles = Article.order(id: :desc)
   end
   def show
     @article = Article.find_by_id(params[:id])
