@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(window).load(function(e)
+{   // for form.html.erb use
+    /*
+    var detectionElement = $('#checked_twice');
+    $("#highrisk").hide();
+    if (detectionElement.get(0))
+    {
+        $(detectionElement).click( function() 
+        {
+            $("#highrisk").fadeToggle();
+            //target.prop('disabled', $(this).is(':checked') == false);
+        });
+    }
+    */
+});

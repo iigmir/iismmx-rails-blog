@@ -1,20 +1,4 @@
-<style>
-    .checkarea td *{display:inline-block;}
-</style>
-<script>
-    $(document).ready(function(e)
-    {
-        var detectionElement = $('#checked_twice');
-        if (detectionElement.get(0)) 
-        {
-            $(detectionElement).click( function() 
-            {
-                var target = $("#highrisk input");
-                target.prop('disabled', $(this).is(':checked') == false);
-            });
-        }
-    });
-</script>
+<style> .checkarea td *{display:inline-block;} </style>
 
 <% if user_signed_in? %>
     <%= form_for @article do |m| %>
@@ -35,12 +19,12 @@
           </td>
         </tr>
         <tr id="highrisk">
-          <td> <%= m.submit "Submit article", disabled:true %> </td>
+          <td> <%= m.submit "Submit article" %> </td>
           <td>
           <% if m == nil %>
-            <%= button_to 'Discard ANY change AND go to index.', articles_path ,method: :get, disabled:true %>
+            <%= link_to 'Cancel this new article', articles_path %>
           <% else %>
-            <%= button_to 'Discard ANY change AND go to article.', @article ,method: :get, disabled:true %>
+            <%= link_to 'Cancel', articles_path %>
           <% end %>
           </td>
         </tr>

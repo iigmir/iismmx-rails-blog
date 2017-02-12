@@ -1,6 +1,4 @@
 class ArticlesController < ApplicationController
-  # Auth setting
-  
   # R for CRUD
   def index
     @articles = Article.order(id: :desc)
@@ -38,7 +36,6 @@ class ArticlesController < ApplicationController
     #  @job.update_attributes(job_params)
     
     #  Fucking! Fucking different! Article.update( art_params ) may update EVERYTHING!!!!!
-    
   end
 
   # D for CRUD
@@ -46,6 +43,13 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+  end
+  
+  before_filter :check_for_cancel, :only => [:create, :update]
+  def check_for_cancel
+    if params[:commit] == "Cancel"
+      redirect_to articles_path
+    end
   end
 
   private
