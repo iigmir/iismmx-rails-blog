@@ -1,4 +1,12 @@
 <style> .checkarea td *{display:inline-block;} </style>
+<script>
+    $(".html_panel button").click(function() 
+    {
+        var input_attr = $(this).attr("id");
+        var ia_element = " <"+input_attr+">"+"foobar"+"</"+input_attr+"> ";
+        $("textarea").val( $("textarea").val()+ia_element );
+    });
+</script>
 
 <% if user_signed_in? %>
     <%= form_for @article do |m| %>
@@ -14,8 +22,7 @@
         </tr>
         <tr class="checkarea">
           <td colspan="2">
-            <%= check_box( "checked", "twice" ) %>
-            <label for="checked_twice">I assume that I truly want to do following action.</label>
+            <%= render "htmlpanel" %>
           </td>
         </tr>
         <tr id="highrisk">
