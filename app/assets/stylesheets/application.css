@@ -38,3 +38,10 @@ h1 a, h2 a
 {
   padding-left:2rem;
 }
+
+code
+{
+  background:#300A24;
+  color:#FFFFFF;
+  font-family:monospace;
+}
