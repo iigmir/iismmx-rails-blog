@@ -3,7 +3,7 @@
 
 var disqus_config = function ()
 {
-  this.page.url = "<%=url_for([@article,{only_path:false}])%>";
+  this.page.url = "https://iismmx-rails-blog.herokuapp.com<%=url_for([@article,{only_path:false}])%>";
   this.page.identifier = "<%= @article.id %>";
 };
 
