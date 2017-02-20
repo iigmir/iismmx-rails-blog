@@ -2,7 +2,7 @@
 <% a = @article %>
 <main>
   <article class="row">
-    <section class="col col-12" class="intros">
+    <section class="col col-12 intros">
       <p class="text-center">
         <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
         <% if user_signed_in? %>
