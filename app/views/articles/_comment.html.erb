@@ -1,0 +1,19 @@
+<div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function ()
+{
+  this.page.url = "<%= url_for([@article,{only_path:false}]) %>";
+  this.page.identifier = "@article.id";
+};
+
+(function(){
+  var d = document, s = d.createElement("script");
+  s.src="//https-iismmx-rails-blog-herokuapp-com.disqus.com/embed.js";
+  s.setAttribute("data-timestamp",+new Date());
+  (d.head||d.body).appendChild(s);
+})();
+</script>
+<noscript>
+  <p>Hi, if you have some comment, please enable JavaScript because <a href="https://disqus.com/?ref_noscript">comment service is powered by Disqus</a>:-)</p>
+</noscript>

@@ -7,19 +7,22 @@
         <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
         <% if user_signed_in? %>
               <br />
-              Hello there <strong>admin</strong>.
+              Hello there.
               Want to <a class="text-center" href="/articles/new">add new article</a>,
               <%= link_to 'edit this article',  edit_article_url(a.id) %>,
               or <%= link_to 'delete Posting(DANGER!)', article_path(a.id), method: :delete, class:"error",
                      data: {confirm: 'Are you sure? THIS ARTICLE WILL DISAPPEAR FOREVER!'} %> ?
               <br />
-              <span> And of course, you can <%= link_to "logout", destroy_user_session_path, method: :delete %>. </span>
+              And of course, you can <%= link_to "logout", destroy_user_session_path, method: :delete %>.
         <% end %>
       </p>
     </section>
     <h2> <%= a.title %> </h2>
     <section class="col col-12 context">
       <%= sanitize(a.context) %>
+    </section>
+    <section class="col col-12 context">
+      <%= render "comment" %>
     </section>
   </article>
 </main>
