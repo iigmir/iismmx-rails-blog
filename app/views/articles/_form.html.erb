@@ -3,7 +3,23 @@
     $(".html_panel button").click(function() 
     {
         var input_attr = $(this).attr("id");
-        var ia_element = " <"+input_attr+">"+"foobar"+"</"+input_attr+"> ";
+        
+        var ia_element;
+        switch (input_attr)
+        {
+          case 'a':
+            ia_element = "<"+input_attr+" href='https://example.com'> foobar </"+input_attr+">";
+            break;
+          case 'ol':
+            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
+            break;
+          case 'ul':
+            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
+            break;
+          default:
+            ia_element = "<"+input_attr+">foobar</"+input_attr+">";
+        }
+
         $("textarea").val( $("textarea").val()+ia_element );
     });
 </script>
