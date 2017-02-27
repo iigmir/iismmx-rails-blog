@@ -1,24 +1,6 @@
 # README
+簡言之，就是[我的 rails 部落格](https://iismmx-rails-blog.herokuapp.com/)。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 版本：[2.3.3](https://zh.moegirl.org/zh-hant/233)
+* 因為使用 heroku 託管，資料庫自然是 PostgreSQL...
+* 專門設計為只有一個人用，所以廢掉了 devise 的註冊視圖
