@@ -62,3 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # rails Auth tool: devise
 gem 'devise'
+# WYSIWYG:CKEditor
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'

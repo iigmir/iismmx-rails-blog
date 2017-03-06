@@ -33,12 +33,12 @@
           <td> <%= m.text_field :title, :required => true %> </td>
         </tr>
         <tr>
-          <td> <%= m.label :context %> </td>
-          <td> <%= m.text_area :context, size: '60x20', :required => true %> </td>
-        </tr>
-        <tr class="checkarea">
-          <td colspan="2">
-            <%= render "htmlpanel" %>
+          <td>
+            <%= m.label :context %>
+          </td>
+          <td>
+            <%= m.cktext_area :context, cols:40 , ckeditor:{ language:'en-gb' } %>
+            <%#= language often: en-gb,ja,zh-tw %>
           </td>
         </tr>
         <tr id="highrisk">
