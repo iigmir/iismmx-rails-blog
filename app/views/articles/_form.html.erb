@@ -37,7 +37,7 @@
     var editor_visibility = $( "#article_context" ).css( "visibility" );
     if ( editor_visibility == "hidden" )
     {
-        editor_visibility = "visible";
+        $( "#article_context" ).css( "visibility" , "visible" );
         console.log( "There's issue about ckeditor. Before issue fixed, please use ckeditor via website:" );
         console.log( "http://sdk.ckeditor.com/samples/uilanguages.html" );
     }
