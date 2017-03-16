@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   # R for CRUD
   def index
-    @articles = Article.order(id: :desc)
+    @articles = Article.order(id: :desc).paginate(:page => params[:page], :per_page => 5 )
   end
   def show
     @article = Article.find_by_id(params[:id])
@@ -28,14 +28,6 @@ class ArticlesController < ApplicationController
     @article.update_attributes(art_params)
     
     redirect_to article_path(@article)
-    #  What's different between:
-    #  Article.update( art_params )
-    
-    #  And:
-    #  @job = Job.find(params[:id])
-    #  @job.update_attributes(job_params)
-    
-    #  Fucking! Fucking different! Article.update( art_params ) may update EVERYTHING!!!!!
   end
 
   # D for CRUD

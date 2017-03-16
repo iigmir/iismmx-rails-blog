@@ -66,3 +66,5 @@ gem 'devise'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+# page
+gem 'will_paginate'
