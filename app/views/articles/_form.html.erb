@@ -1,29 +1,4 @@
 <style> .checkarea td *{display:inline-block;} button{margin: 1rem;} </style>
-<script>
-    $(".html_panel button").click(function() 
-    {
-        var input_attr = $(this).attr("id");
-        
-        var ia_element;
-        switch (input_attr)
-        {
-          case 'a':
-            ia_element = "<"+input_attr+" href='https://example.com'> foobar </"+input_attr+">";
-            break;
-          case 'ol':
-            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
-            break;
-          case 'ul':
-            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
-            break;
-          default:
-            ia_element = "<"+input_attr+">foobar</"+input_attr+">";
-        }
-
-        $("textarea").val( $("textarea").val()+ia_element );
-    });
-</script>
-
 <% if user_signed_in? %>
     <%= form_for @article do |m| %>
     <main>
@@ -57,3 +32,39 @@
    or you want to <%= link_to 'go home',articles_url,method: :get %>?
   </p>
 <% end %>
+
+<script>
+    var editor_visibility = $( "#article_context" ).css( "visibility" );
+    if ( editor_visibility == "hidden" )
+    {
+        $( "#article_context" ).css( "visibility" , "visible" );
+        console.log( "There's issue about ckeditor. Before issue fixed, please use ckeditor via website:" );
+        console.log( "http://sdk.ckeditor.com/samples/uilanguages.html" );
+    }
+    /*
+    $(".html_panel button").click(function() 
+    {
+        var input_attr = $(this).attr("id");
+        
+        var ia_element;
+        switch (input_attr)
+        {
+          case 'a':
+            ia_element = "<"+input_attr+" href='https://example.com'> foobar </"+input_attr+">";
+            break;
+          case 'ol':
+            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
+            break;
+          case 'ul':
+            ia_element = "<"+input_attr+"> <li></li> </"+input_attr+">";
+            break;
+          default:
+            ia_element = "<"+input_attr+">foobar</"+input_attr+">";
+        }
+
+        $("textarea").val( $("textarea").val()+ia_element );
+    });
+    
+    
+    */
+</script>

@@ -1,8 +1,8 @@
-<h1 class="text-center"> <%= link_to( image_tag("http://iismmx.netau.net/rails.png",alt:"Logo of my Rails blog",title:"Logo of my Rails blog"), articles_url, method: :get ) %> </h1>
+<h1 class="text-center"> <%= link_to( image_tag("http://iismmx.netau.net/rails.png",alt:"Logo of IISMMX's Rails Blog",title:"IISMMX's Rails Blog"), articles_url, method: :get ) %> </h1>
 <% a = @article %>
 <main>
   <article class="row">
-    <section class="col col-12 intros">
+    <nav class="col col-12 intros">
       <p class="text-center">
         <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
         <% if user_signed_in? %>
@@ -16,12 +16,14 @@
               And of course, you can <%= link_to "logout", destroy_user_session_path, method: :delete %>.
         <% end %>
       </p>
-    </section>
+    </nav>
     <h2> <%= a.title %> </h2>
     <section class="col col-12 context">
+      <h3 class="hide"> Article( <%= a.title %> )'s context </h3>
       <%= sanitize(a.context) %>
     </section>
     <section class="col col-12 context">
+      <h3 class="hide"> Article comment </h3>
       <%= render "comment" %>
     </section>
   </article>
