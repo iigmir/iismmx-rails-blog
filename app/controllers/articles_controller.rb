@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  
   # R for CRUD
   def index
     @articles = Article.order(id: :desc).paginate(:page => params[:page], :per_page => 5 )
