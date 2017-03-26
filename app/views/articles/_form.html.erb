@@ -1,6 +1,5 @@
 <style> .checkarea td *{display:inline-block;} button{margin: 1rem;} </style>
-<% if user_signed_in? %>
-    <%= form_for @article do |m| %>
+<%= form_for @article do |m| %>
     <main>
       <table>
         <tr>
@@ -24,13 +23,6 @@
         </tr>
       </table>
     </main>
-    <% end %>
-<% else %>
-  <p class="text-center">
-  Hello there guest, to do actions in this page,
-   you need to <%#= link_to "sign up,", new_user_registration_path %> <%= link_to "login", new_user_session_path  %>,
-   or you want to <%= link_to 'go home',articles_url,method: :get %>?
-  </p>
 <% end %>
 
 <script>
