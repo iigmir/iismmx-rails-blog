@@ -5,13 +5,13 @@ class MylinksController < ApplicationController
     @link = Mylink.new
   end
   def create
-    Article.create( link_params )
+    Mylink.create( link_params )
     redirect_to mylinks_path
   end
 
   # R
   def index
-    @links = Mylink.order(id: :desc)
+    @links = Mylink.order(id: :asc)
   end
 
   # U
@@ -25,15 +25,15 @@ class MylinksController < ApplicationController
   end
 
   # D
-  def destory
+  def destroy
     @link = Mylink.find(params[:id])
-    @line.destroy
+    @link.destroy
     redirect_to mylinks_path
   end
 
   # params
   private
   def link_params
-    params.require(:article).permit(:site, :name, :intro, :group))
+    params.require(:mylink).permit(:site, :name, :intro, :group)
   end
 end
