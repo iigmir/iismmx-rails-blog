@@ -1,0 +1,32 @@
+<div class="row align-center"><div class="col col-6">
+<%= form_for @link do |l| %>
+    <table>
+        <tr>
+            <td> <%= l.label :name,"Site name" %> </td>
+            <td> <%= l.text_field :name, :required => true %> </td>
+        </tr>
+        <tr>
+            <td> <%= l.label :site,"Site address" %> </td>
+            <td> <%= l.text_field :site, :required => true, :value => "https://" %> </td>
+        </tr>
+        <% if controller.action_name == "edit" %>
+        <tr>
+            <td> Original site address </td>
+            <td> <%= @link.site %> </td>
+        </tr>
+        <% end %>
+        <tr>
+            <td> <%= l.label :intro,"Site info" %> </td>
+            <td> <%= l.text_field :intro, :required => true %> </td>
+        </tr>
+        <tr>
+            <td> <%= l.label :group,"Which group this site should be?" %> </td>
+            <td> <%= l.text_field :group, :required => true %> </td>
+        </tr>
+        <tr id="highrisk">
+            <td> <%= l.submit "Submit Link" %> </td>
+            <td> <%= link_to 'Cancel', mylinks_path %> </td>
+        </tr>
+    </table>
+<% end %>
+</div></div>

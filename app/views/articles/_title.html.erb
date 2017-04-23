@@ -7,22 +7,25 @@ i{ margin:1rem; }
     margin:0;
     width:100%;
   }
-  #mygithub i
+  .linkgap4rwd i
   {
     margin-top:1.5rem;
     margin-bottom:1rem;
   }
 }
 </style>
-<h1 class="text-center"> <%= link_to( image_tag("http://iismmx.netau.net/rails.png",alt:"Logo of IISMMX's Rails Blog",title:"IISMMX's Rails Blog"), articles_url, method: :get ) %> </h1>
+<h1 class="text-center"> <%= link_to( image_tag("rails.png",alt:"Logo of IISMMX's Rails Blog",title:"IISMMX's Rails Blog"), articles_url, method: :get ) %> </h1>
 <div id="snslink" class="text-center">
-  <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir", class: "" do %>
-    <%= fa_icon "firefox  5x" %>
+  <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir" do %>
+    <%= fa_icon "firefox 5x" %>
   <% end %>
-  <%= link_to "https://www.github.com/iigmir", id:"mygithub" do %>
-    <%= fa_icon "github   5x" %>
+  <%= link_to "https://www.github.com/iigmir", class:"linkgap4rwd" do %>
+    <%= fa_icon "github  5x" %>
   <% end %>
-  <%= link_to "https://www.linkedin.com/in/sam-tan-934801b2", class: "" do %>
+  <%= link_to "https://www.linkedin.com/in/sam-tan-934801b2" do %>
     <%= fa_icon "linkedin 5x" %>
+  <% end %>
+  <%= link_to mylinks_path, class:"linkgap4rwd" do %>
+    <%= fa_icon "link 5x" %>
   <% end %>
 </div>

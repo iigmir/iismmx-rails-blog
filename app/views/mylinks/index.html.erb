@@ -1,1 +1,47 @@
+<style>
+.crud_mylink a
+{
+    text-decoration: none;
+    display:inline-block;
+}
+.crud_mylink i
+{
+    margin:0;
+    padding:0.25rem;
+}
+</style>
 <%= render "articles/title" %>
+<p class="text-center">
+    <% if user_signed_in? %>
+        Hello there <strong><%= current_user.email %></strong>.
+        Want to add <%= link_to "new link", new_mylink_path %>,
+        or <%= link_to "logout", destroy_user_session_path, method: :delete %> ?
+    <% else %>
+        Hello there guest,
+        want to <%= link_to "login", new_user_session_path %>?
+    <% end %>
+</p>
+<div class="row align-center">
+    <div class="col col-6">
+        <p class="text-center">這裡會條列一些我常用的網站，以及我為什麼常用他們。</p>
+    </div>
+</div>
+<div class="row align-center">
+    <div class="col col-6">
+        <ul>
+            <% @links.each do |l| %>
+                <li class="crud_mylink"> 
+                    <% if user_signed_in? %>
+                        <%= link_to edit_mylink_path(l.id), method: :get do %>
+                            <%= fa_icon "pencil" %>
+                        <% end %>
+                        <%= link_to mylink_path(l.id), method: :delete , data: { confirm: 'Are you sure? THIS LINK WILL DISAPPEAR FOREVER!'} do %>
+                            <%= fa_icon "times" %>
+                        <% end %>
+                    <% end %>
+                    <%= link_to l.name , l.site , target: "_blank" %> : <%= l.intro %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
