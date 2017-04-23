@@ -46,3 +46,8 @@ code
   color:#FFFFFF;
   font-family:monospace;
 }
+
+#snslink a
+{
+  text-decoration:none;
+}
