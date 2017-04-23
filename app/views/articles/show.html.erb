@@ -22,9 +22,5 @@
       <h3 class="hide">文章「<%= a.title %>」的內文</h3>
       <%= sanitize(a.context) %>
     </section>
-    <section class="col col-12 context">
-      <h3 class="hide">文章「<%= a.title %>」的留言</h3>
-      <%= render "comment" %>
-    </section>
   </article>
 </main>
