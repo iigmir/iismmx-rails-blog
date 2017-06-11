@@ -17,6 +17,7 @@
 body
 {
   background-color: #d6ccca;
+  padding:1rem;
 }
 
 main
@@ -51,3 +52,4 @@ code
 {
   text-decoration:none;
 }
+
