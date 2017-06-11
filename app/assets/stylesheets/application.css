@@ -53,3 +53,11 @@ code
   text-decoration:none;
 }
 
+.previous_page
+{
+  margin-right:0.5rem;
+}
+.pagination .current
+{
+  padding:1rem;
+}
