@@ -1,4 +1,4 @@
-<style>
+<%= content_for :css_custom do %>
 i{ margin:1rem; }
 @media (max-width:400px)
 {
@@ -13,8 +13,8 @@ i{ margin:1rem; }
     margin-bottom:1rem;
   }
 }
-</style>
-<h1 class="text-center"> <%= link_to( image_tag("rails.png",alt:"Logo of IISMMX's Rails Blog",title:"IISMMX's Rails Blog"), articles_url, method: :get ) %> </h1>
+<% end %>
+<h1 class="text-center"> <%= link_to( image_tag("rails.png",alt:"Logo of IISMMX's Rails Blog",title:"Logo of IISMMX's Rails Blog"), articles_url, method: :get ) %></h1>
 <div id="snslink" class="text-center">
   <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir" do %>
     <%= fa_icon "firefox 5x" %>

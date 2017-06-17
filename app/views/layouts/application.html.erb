@@ -4,13 +4,15 @@
     <title>IISMMX's Rails blog</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="My little notes about Web development." />
+    <meta name="description" content="I want to write articles even Kurosawa Ruby can understand." />
     <meta name="keywords" content="Rails,Ruby on Rails,Web development" />
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag Ckeditor.cdn_url %>
+    <%= yield(:css_plugins) %>
+    <style>
+        <%= yield(:css_custom)  %>
+    </style>
   </head>
 
   <body>
@@ -21,5 +23,12 @@
         <p class="message error"><%= alert %></p>
     <% end %>
     <%= yield %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag Ckeditor.cdn_url %>
+    <%= yield(:js_plugins) %>
+    <script>
+        <%= yield(:js_custom) %>
+    </script>
   </body>
 </html>

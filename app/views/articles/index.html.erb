@@ -1,4 +1,4 @@
-<style>
+<%= content_for :css_custom do %>
   li
   {
     margin-bottom:1rem;
@@ -8,7 +8,7 @@
   li span { padding:0.5rem; }
   li span:hover{ background-color:#FFFFFF;  }
   @media (min-width:700px){ li span br{ display:none; } }
-</style>
+<% end %>
 
 <%= render "title" %>
 <p class="text-center"> <%= render "indexauth" %> </p>
