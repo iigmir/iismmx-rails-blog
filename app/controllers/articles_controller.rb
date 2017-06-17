@@ -7,9 +7,9 @@ class ArticlesController < ApplicationController
   end
   def show
     @article = Article.find_by_id(params[:id])
-    if @article == nil
-      redirect_to articles_path
-    end
+    #if @article == nil
+    #  redirect_to articles_path
+    #end
   end
 
   # C for CRUD
