@@ -1,6 +1,8 @@
-<style>
-.checkarea td *{display:inline-block;} button{margin: 1rem;}
-</style>
+<%= content_for :css_custom do %>
+    .checkarea td *{display:inline-block;}
+    button{margin: 1rem;}
+<% end %>
+
 <%= form_for @article do |m| %>
     <main>
       <table>
@@ -27,10 +29,11 @@
     </main>
 <% end %>
 
-<%= content_for :js_plugins %>
+<%= content_for :js_plugins do %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
 <% end %>
-<script>
+
+<%= content_for :js_custom do %>
     var editor_visibility = $( "#article_context" ).css( "visibility" );
     if ( editor_visibility == "hidden" )
     {
@@ -38,4 +41,4 @@
         console.log( "There's issue about ckeditor. Before issue fixed, please use ckeditor via website:" );
         console.log( "http://sdk.ckeditor.com/samples/uilanguages.html" );
     }
-</script>
+<% end %>
