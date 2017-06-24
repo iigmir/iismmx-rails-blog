@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require ckeditor/init
 //= require ckeditor/ckeditor
-//= require_tree .
+//= require kube.min
+//= require_self

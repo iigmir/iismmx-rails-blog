@@ -15,7 +15,9 @@
 <p class="text-center">
     <% if user_signed_in? %>
         Hello there <strong><%= current_user.email %></strong>.
-        Want to add <%= link_to "new link", new_mylink_path %>,
+        Want to add <%= link_to "new link", "#", 
+        :data => { :component => "modal", :target => "#my-modal", :user_action => new_mylink_path } %>,
+
         or <%= link_to "logout", destroy_user_session_path, method: :delete %> ?
     <% else %>
         Hello there guest,
@@ -33,7 +35,7 @@
             <% @links.each do |l| %>
                 <li class="crud_mylink"> 
                     <% if user_signed_in? %>
-                        <%= link_to edit_mylink_path(l.id), method: :get do %>
+                        <%= link_to "#", :data => { :component => "modal", :target => "#my-modal", :user_action => edit_mylink_path(l.id) } do %>
                             <%= fa_icon "pencil" %>
                         <% end %>
                         <%= link_to mylink_path(l.id), method: :delete , data: { confirm: 'Are you sure? THIS LINK WILL DISAPPEAR FOREVER!'} do %>
@@ -46,3 +48,31 @@
         </ul>
     </div>
 </div>
+<div id="my-modal" class="modal-box hide">
+    <div class="modal">
+        <span class="close"></span>
+        <div class="modal-header">Modal Header</div>
+        <div class="modal-body">Modal</div>
+    </div>
+</div>
+<%= content_for :js_custom do %>
+$('[data-target="#my-modal"]').click(function()
+{
+    var target_url = $(this)[0].dataset.userAction;
+    $.ajax
+    ({
+        url: target_url,
+        success: function( data , stat, jqxr )
+        {
+            $("#my-modal .modal-body").html(data);
+        },
+        error: function( data , stat, jqxr )
+        {
+            alert("ERROR");
+            console.log(data);
+            console.log(stat);
+            console.log(jqxr);
+        },
+    });
+});
+<% end %>
