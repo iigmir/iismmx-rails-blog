@@ -7,14 +7,8 @@
         </tr>
         <tr>
             <td> <%= l.label :site,"Site address" %> </td>
-            <td> <%= l.text_field :site, :required => true, :value => "https://" %> </td>
+            <td> <%= l.text_field :site, :required => true, :value => controller.action_name == "edit" ? @link.site : "https://" %> </td>
         </tr>
-        <% if controller.action_name == "edit" %>
-        <tr>
-            <td> Original site address </td>
-            <td> <%= @link.site %> </td>
-        </tr>
-        <% end %>
         <tr>
             <td> <%= l.label :intro,"Site info" %> </td>
             <td> <%= l.text_field :intro, :required => true %> </td>
