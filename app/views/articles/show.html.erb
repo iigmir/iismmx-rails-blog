@@ -2,7 +2,9 @@
 <% a = @article %>
 <main>
   <article class="row">
+    <h2 class="hide"> <%= a.title %> </h2>
     <nav class="col col-12 intros">
+      <h3 class="hide">「<%= a.title %>」文章的資訊</h3>
       <p class="text-center">
         <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
         <% if user_signed_in? %>
@@ -19,7 +21,7 @@
     </nav>
     <h2> <%= a.title %> </h2>
     <section class="col col-12 context">
-      <h3 class="hide">文章「<%= a.title %>」的內文</h3>
+      <h3 class="hide">「<%= a.title %>」文章的內文</h3>
       <%= sanitize(a.context) %>
     </section>
   </article>
