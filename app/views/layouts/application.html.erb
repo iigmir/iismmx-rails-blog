@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-hant">
-  <head>
-    <title>IISMMX's Rails blog</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="I want to write articles even Kurosawa Ruby can understand." />
-    <meta name="keywords" content="Rails,Ruby on Rails,Web development" />
-    <%= csrf_meta_tags %>
+    <head>
+        <title>IISMMX's Rails blog</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="I want to write articles even Kurosawa Ruby can understand." />
+        <meta name="keywords" content="Ruby on Rails,Web development,Front-end development" />
+        <%= csrf_meta_tags %>
+        <%= stylesheet_link_tag 'application', media: 'all' %>
+        <%= stylesheet_link_tag params[:controller] %>
+    </head>
+    <body id="<%= controller.controller_name %>_<%= controller.action_name %>">
+        <%
+        devise_msg_class = ""
+        devise_msg_text = nil
+        if notice
+            devise_msg_class = "message"
+            devise_msg_text = notice
+        end
+        if alert
+            devise_msg_class = "message error"
+            devise_msg_text = alert
+        end
+        %>
+        <p class="<%= devise_msg_class %>"><%= devise_msg_text %></p>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= yield(:css_plugins) %>
-    <style>
-        <%= yield(:css_custom)  %>
-    </style>
-  </head>
-
-  <body>
-    <% if notice %>
-        <p class="message"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-        <p class="message error"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_include_tag Ckeditor.cdn_url %>
-    <%= yield(:js_plugins) %>
-    <script>
-        <%= yield(:js_custom) %>
-    </script>
-  </body>
+        <%= yield %>
+        <%= javascript_include_tag 'application' %>
+        <%= yield(:js_plugins) %>
+        <script>
+            <%= yield(:js_custom) %>
+        </script>
+    </body>
 </html>

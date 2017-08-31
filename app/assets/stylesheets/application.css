@@ -14,50 +14,66 @@
  *= require_self
  *= require font-awesome
  */
+
+#snslink i { margin:1rem; }
+@media (max-width:400px)
+{ 
+    #snslink i
+    { 
+        margin:0;
+        width:100%;
+    }
+    .linkgap4rwd i
+    { 
+        margin-top:1.5rem;
+        margin-bottom:1rem;
+    }
+}
+
 body
 {
-  background-color: #d6ccca;
-  padding:1rem;
+    background-color: #d6ccca;
+    padding:1rem;
 }
 
 main
 {
-  max-width:960px;
-  margin:0 auto;
+    max-width:960px;
+    margin:0 auto;
 }
 
 h1
 {
-  margin-top:1rem;
+    margin-top:1rem;
 }
 
 h1 a, h2 a
 {
-  color: #003399;
+    color: #003399;
 }
 
 .context
 {
-  padding-left:2rem;
+    padding-left:2rem;
 }
 
 code
 {
-  background:#300A24;
-  color:#FFFFFF;
-  font-family:monospace;
+    background:#300A24;
+    color:#FFFFFF;
+    font-family:monospace;
 }
 
 #snslink a
 {
-  text-decoration:none;
+    text-decoration:none;
 }
 
 .previous_page
 {
-  margin-right:0.5rem;
+    margin-right:0.5rem;
 }
 .pagination .current
 {
-  padding:1rem;
+    padding:1rem;
 }

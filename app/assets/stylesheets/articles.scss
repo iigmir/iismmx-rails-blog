@@ -1,3 +1,15 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#articles_index
+{
+    li
+    {
+        margin-bottom:1rem;
+        padding-bottom:1rem;
+        border-bottom:1px dashed #FFFFFF;
+    }
+    li span { padding:0.5rem; }
+    @media (min-width:700px){ li span br{ display:none; } }
+}
