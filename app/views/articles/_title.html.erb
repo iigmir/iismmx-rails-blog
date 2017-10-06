@@ -1,12 +1,14 @@
-<h1 class="text-center"> <%= link_to( image_tag("rails.png",alt:"IISMMX's Rails Blog",title:"Logo of IISMMX's Rails Blog"), articles_url, method: :get ) %></h1>
+<h1 class="text-center">
+  <%= link_to( image_tag("rails.png",alt:"IISMMX's Rails Blog",title:"Logo of IISMMX's Rails Blog"), articles_url, method: :get ) %>
+</h1>
 <div id="snslink" class="text-center">
-  <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir" do %>
+  <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir", target: "_blank" do %>
     <%= fa_icon "firefox 5x" %>
   <% end %>
-  <%= link_to "https://www.github.com/iigmir", class:"linkgap4rwd" do %>
+  <%= link_to "https://www.github.com/iigmir", target: "_blank" , class:"linkgap4rwd" do %>
     <%= fa_icon "github  5x" %>
   <% end %>
-  <%= link_to "https://codepen.io/iigmir" do %>
+  <%= link_to "https://codepen.io/iigmir", target: "_blank" do %>
     <%= fa_icon "codepen 5x" %>
   <% end %>
   <%= link_to mylinks_path, class:"linkgap4rwd" do %>
