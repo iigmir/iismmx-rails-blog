@@ -16,7 +16,7 @@
  *= require font-awesome
  */
 
- body
+body
 {
     background-color: #d6ccca;
     padding:1rem;
@@ -43,11 +43,6 @@ pre
     background:#300A24;
     color:#FFFFFF;
     font-family:monospace;
-}
-
-#snslink a
-{
-    text-decoration:none;
 }
 
 .previous_page

@@ -1,24 +1,20 @@
 <nav>
     <div class="l-side">
         <h1>
-            <a href="<%= root_url %>">
-                <%= image_tag("rails.png",alt:"IISMMX's Rails Blog",title:"Logo of IISMMX's Rails Blog") %>
-            </a>
+        <%=
+            link_to root_url do
+                image_tag("rails.png",alt:"IISMMX's Rails Blog",title:"Logo of IISMMX's Rails Blog")
+            end
+        %>
         </h1>
     </div>
     <div class="r-side">
         <div>
-            <%= link_to "https://developer.mozilla.org/zh-TW/profiles/iigmir", target: "_blank" do %>
-                <%= fa_icon "firefox 3x" %>
-            <% end %>
-            <%= link_to "https://www.github.com/iigmir", target: "_blank" , class:"linkgap4rwd" do %>
-                <%= fa_icon "github  3x" %>
-            <% end %>
-            <%= link_to "https://codepen.io/iigmir", target: "_blank" do %>
-                <%= fa_icon "codepen 3x" %>
-            <% end %>
-            <%= link_to mylinks_path, class:"linkgap4rwd" do %>
-                <%= fa_icon "link 3x" %>
+            <%= sns_link( "firefox" ) %>
+            <%= sns_link( "github" ) %>
+            <%= sns_link( "codepen" ) %>
+            <%= link_to mylinks_path do %>
+                <%= fa_icon "link" %>
             <% end %>
         </div>
     </div>
