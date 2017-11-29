@@ -11,26 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require kube
+ *= require navbar
  *= require_self
  *= require font-awesome
  */
 
-#snslink i { margin:1rem; }
-@media (max-width:400px)
-{ 
-    #snslink i
-    { 
-        margin:0;
-        width:100%;
-    }
-    .linkgap4rwd i
-    { 
-        margin-top:1.5rem;
-        margin-bottom:1rem;
-    }
-}
-
-body
+ body
 {
     background-color: #d6ccca;
     padding:1rem;
@@ -40,11 +26,6 @@ main
 {
     max-width:960px;
     margin:0 auto;
-}
-
-h1
-{
-    margin-top:1rem;
 }
 
 h1 a, h2 a
