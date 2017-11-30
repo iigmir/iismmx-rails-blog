@@ -5,27 +5,27 @@
 
 <%= form_for @article do |m| %>
     <main>
-      <table>
-        <tr>
-          <td> <%= m.label :title %> </td>
-          <td> <%= m.text_field :title, :required => true %> </td>
-        </tr>
-        <tr>
-          <td>
-            <%= m.label :context %>
-          </td>
-          <td>
-            <%= m.cktext_area :context, cols:40 %>
-            <%#= language often: en-gb,ja,zh-tw %>
-          </td>
-        </tr>
-        <tr id="highrisk">
-          <td> <%= m.submit "Submit article" %> </td>
-          <td>
-              <%= link_to 'Cancel', @article %>
-          </td>
-        </tr>
-      </table>
+        <table>
+            <tr>
+                <td> <%= m.label :title %> </td>
+                <td> <%= m.text_field :title, :required => true %> </td>
+            </tr>
+            <tr>
+                <td>
+                    <%= m.label :context %>
+                </td>
+                <td>
+                    <%= m.cktext_area :context, cols:40 %>
+                    <%#= language often: en-gb,ja,zh-tw %>
+                </td>
+            </tr>
+            <tr id="highrisk">
+                <td> <%= m.submit "Submit article" %> </td>
+                <td>
+                    <%= link_to 'Cancel', @article %>
+                </td>
+            </tr>
+        </table>
     </main>
 <% end %>
 

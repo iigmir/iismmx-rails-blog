@@ -22,9 +22,13 @@ module ApplicationHelper
 
     def login_and_out()
         if user_signed_in?
-            "in"
+            link_to destroy_user_session_path, method: :delete do
+                fa_icon "sign-out"
+            end
         else
-            "out"
+            link_to new_user_session_path do
+                fa_icon "sign-in"
+            end
         end
     end
 end

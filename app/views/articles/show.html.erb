@@ -1,28 +1,17 @@
-<%= render "title" %>
 <% a = @article %>
 <main>
-  <article class="row">
-    <h2 class="hide"> <%= a.title %> </h2>
-    <nav class="col col-12 intros">
-      <h3 class="hide">「<%= a.title %>」文章的資訊</h3>
-      <p class="text-center">
-        <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b>
-        <% if user_signed_in? %>
-              <br />
-              Hello there.
-              Want to <a class="text-center" href="/articles/new">add new article</a>,
-              <%= link_to 'edit this article',  edit_article_url(a.id) %>,
-              or <%= link_to 'delete Posting(DANGER!)', article_path(a.id), method: :delete, class:"error",
-                     data: {confirm: 'Are you sure? THIS ARTICLE WILL DISAPPEAR FOREVER!'} %> ?
-              <br />
-              And of course, you can <%= link_to "logout", destroy_user_session_path, method: :delete %>.
-        <% end %>
-      </p>
-    </nav>
-    <h2> <%= a.title %> </h2>
-    <section class="col col-12 context">
-      <h3 class="hide">「<%= a.title %>」文章的內文</h3>
-      <%= sanitize(a.context) %>
-    </section>
-  </article>
+    <article>
+        <div class="text-center">
+            <h2> <%= a.title %> </h2>
+            <p>
+                <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b> <br />
+                <% if user_signed_in? %>
+                    Hello there. Want to <a class="text-center" href="/articles/new">add new article</a>, <%= link_to 'edit this article',  edit_article_url(a.id) %>, or <%= link_to 'delete Posting(DANGER!)', article_path(a.id), method: :delete, class:"error", data: {confirm: 'Are you sure? THIS ARTICLE WILL DISAPPEAR FOREVER!'} %>?
+                <% end %>
+            </p>
+        </div>
+        <div>
+            <%= sanitize(a.context) %>
+        </div>
+    </article>
 </main>

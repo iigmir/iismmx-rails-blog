@@ -1,13 +1,15 @@
-<p class="text-center"> <%= render "indexauth" %> </p>
+<% if user_signed_in? %>
+    <p class="text-center"> Hello <strong><%= current_user.email %></strong>. Want to add <a class="text-center" href="/articles/new">new article</a>? </p>
+<% end %>
 
 <main class="row align-center">
-  <ul class="col col-12 unstyled">
-  <% @articles.each do |a| %>
-  <li class="text-center">
-    <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
-    <span> Created: <%= a.created_at %>,<br/> Last updated: <%= a.updated_at %> </span>
-  </li>
-  <% end %>
-  </ul>
-  <div class="text-center"> <%= will_paginate @articles %> </div>
+    <ul class="col col-12 unstyled">
+    <% @articles.each do |a| %>
+        <li class="text-center">
+            <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
+            <span> Created: <%= a.created_at %>,<br/> Last updated: <%= a.updated_at %> </span>
+        </li>
+    <% end %>
+    </ul>
+    <div class="text-center"> <%= will_paginate @articles %> </div>
 </main>
