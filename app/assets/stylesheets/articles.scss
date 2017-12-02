@@ -11,5 +11,16 @@
         border-bottom:1px dashed #FFFFFF;
     }
     li span { padding:0.5rem; }
-    @media (min-width:700px){ li span br{ display:none; } }
+}
+
+@media (min-width:700px)
+{
+    li span br{ display:none; }
+    article .article_context{ padding-left: 2rem; }
+}
+
+article .article_info
+{
+    border-bottom: 1px ridge #FFFFFF;
+    margin-bottom: 1rem;
 }

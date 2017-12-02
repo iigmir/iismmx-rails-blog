@@ -1,7 +1,7 @@
 <% a = @article %>
 <main>
     <article>
-        <div class="text-center">
+        <div class="article_info">
             <h2> <%= a.title %> </h2>
             <p>
                 <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b> <br />
@@ -10,7 +10,7 @@
                 <% end %>
             </p>
         </div>
-        <div>
+        <div class="article_context">
             <%= sanitize(a.context) %>
         </div>
     </article>
