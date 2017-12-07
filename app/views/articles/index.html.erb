@@ -5,7 +5,7 @@
 <main class="row align-center">
     <ul class="col col-12 unstyled">
     <% @articles.each do |a| %>
-        <li class="text-center">
+        <li>
             <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
             <span> Created: <%= a.created_at %>,<br/> Last updated: <%= a.updated_at %> </span>
         </li>

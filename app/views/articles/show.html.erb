@@ -3,7 +3,7 @@
     <article>
         <div class="article_info">
             <h2> <%= a.title %> </h2>
-            <p>
+            <p style="padding-left:1rem;">
                 <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b> <br />
                 <% if user_signed_in? %>
                     Hello there. Want to <a class="text-center" href="/articles/new">add new article</a>, <%= link_to 'edit this article',  edit_article_url(a.id) %>, or <%= link_to 'delete Posting(DANGER!)', article_path(a.id), method: :delete, class:"error", data: {confirm: 'Are you sure? THIS ARTICLE WILL DISAPPEAR FOREVER!'} %>?

@@ -2,25 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#articles_index
-{
-    li
-    {
-        margin-bottom:1rem;
-        padding-bottom:1rem;
-        border-bottom:1px dashed #FFFFFF;
-    }
-    li span { padding:0.5rem; }
-}
-
-@media (min-width:700px)
-{
-    li span br{ display:none; }
-    article .article_context{ padding-left: 2rem; }
-}
-
 article .article_info
 {
     border-bottom: 1px ridge #FFFFFF;
     margin-bottom: 1rem;
+}
+
+@media (min-width:700px)
+{
+    #articles_index ul
+    {
+        li
+        {
+            padding-bottom:12px;
+            margin-bottom: 12px;
+            border-bottom:1px dashed #FFFFFF;
+
+            span
+            {
+                padding:1rem;
+            }
+        }
+    }
+
+    li span br{ display:none; }
+    article .article_context{ padding-left: 2rem; }
 }
