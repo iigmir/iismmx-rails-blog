@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( articles.css )
 Rails.application.config.assets.precompile += %w( mylinks.css )
 Rails.application.config.assets.precompile += %w( ckeditor/* ckeditor/lang/*  )
+Rails.application.config.assets.precompile += %w( article_tags.css )

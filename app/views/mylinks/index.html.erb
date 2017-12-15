@@ -42,6 +42,7 @@
     </div>
 </div>
 <%= content_for :js_custom do %>
+<script>
 $('[data-target="#my-modal"]').click(function()
 {
     var target_url = $(this)[0].dataset.userAction;
@@ -61,4 +62,5 @@ $('[data-target="#my-modal"]').click(function()
         },
     });
 });
+</script>
 <% end %>

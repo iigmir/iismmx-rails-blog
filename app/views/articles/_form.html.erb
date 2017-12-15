@@ -34,6 +34,7 @@
 <% end %>
 
 <%= content_for :js_custom do %>
+<script>
     var editor_visibility = $( "#article_context" ).css( "visibility" );
     if ( editor_visibility == "hidden" )
     {
@@ -41,4 +42,5 @@
         console.log( "There's issue about ckeditor. Before issue fixed, please use ckeditor via website:" );
         console.log( "http://sdk.ckeditor.com/samples/uilanguages.html" );
     }
+</script>
 <% end %>

@@ -25,12 +25,9 @@
         end
         %>
         <p class="<%= devise_msg_class %>"><%= devise_msg_text %></p>
-
         <%= yield %>
         <%= javascript_include_tag 'application' %>
         <%= yield(:js_plugins) %>
-        <script>
-            <%= yield(:js_custom) %>
-        </script>
+        <%= yield(:js_custom) %>
     </body>
 </html>

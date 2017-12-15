@@ -1,0 +1,32 @@
+<main>
+    <% if user_signed_in? %>
+        <p class="text-center"> Hello <strong><%= current_user.email %></strong>. Want to add <a class="text-center" href="/articles/new">new article</a>? </p>
+    <% end %>
+    
+    <div id="tags_breakline"></div>
+    <% @tags.each do |t| %>
+        <button class="button"
+         data-component="modal" data-target="#articles_modal"
+         data-url="<%= article_tag_path( t.id ) %>" >
+            <%= t.tag_name %>
+        </button>
+    <% end %>
+</main>
+
+<div id="articles_modal" class="modal-box hide">
+    <div class="modal">
+        <span class="close"></span>
+        <div class="modal-header">UI Modal</div>
+        <div class="modal-body">
+        </div>
+    </div>
+</div>
+
+<div id="action_modal" class="modal-box hide">
+    <div class="modal">
+        <span class="close"></span>
+        <div class="modal-header">Tags action</div>
+        <div class="modal-body">
+        </div>
+    </div>
+</div>

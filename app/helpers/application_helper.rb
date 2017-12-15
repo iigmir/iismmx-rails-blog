@@ -15,7 +15,7 @@ module ApplicationHelper
         account_name = "iigmir"
         website = sns_type_switch( sns_type ) + account_name
 
-        link_to website, target: "_blank" do
+        link_to website, target: "_blank", title: sns_type do
             fa_icon sns_type
         end
     end
