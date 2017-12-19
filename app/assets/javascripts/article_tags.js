@@ -1,7 +1,5 @@
 $(document).ready(function()
 {
-    
-
     $.ajax
     ({
         url: "/article_tags.json",
@@ -25,11 +23,9 @@ $(document).ready(function()
                 idnum: "/article_tags/" + rgo_input.id,
                 value: rgo_input.tag_name
             };
-            // btn_html_dataset = `data-component="modal" data-target="#articles_modal" data-render-api="${btn_tmpdata.idnum}" `;
-            btn_tmpview = `<button class='button'
-                data-component="modal" data-target="#articles_modal"
-                data-render-api="${btn_tmpdata.idnum}"
-            > ${btn_tmpdata.value} </button>`;
+
+            btn_tmpview = '<button class="button" data-component="modal" data-target="#articles_modal" data-render-api='
+            + btn_tmpdata.idnum + ">" + ${btn_tmpdata.value} + "</button>";
             return btn_curr += btn_tmpview;
         });
         
@@ -66,9 +62,8 @@ $(document).ready(function()
         var render_templete = "";
         cr_input.forEach(function( rgo_input )
         {
-            render_templete += `<li>
-                <a href="articles/${ rgo_input.id }">${ rgo_input.title }</a>
-            </li>`;
+            render_templete += '<li><a href="articles/' + rgo_input.id + ">" + rgo_input.title +
+            "</a> </li>";
         });
         $( "#articles_modal .render_texts" ).html( render_templete );
         return;
