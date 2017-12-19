@@ -1,10 +1,13 @@
 <main>
     <% if user_signed_in? %>
-        <%= form_for @new_article_tag do |m| %>
-            <%= m.text_field :title, :required => true , placeholder:"標題" %>
-            <%= m.submit "發送" %>
-        <% end %>
-        <p class="text-center"> Hello <strong><%= current_user.email %></strong>. Want to add <a class="text-center" href="/articles/new">new article</a>? </p>
+        <div id="new_tag_form" class="w60">
+            <%= form_for @new_article_tag do |t| %>
+                <div class="append w50">
+                    <%= t.text_field :tag_name , required: true  %>
+                    <%= t.submit "新增分類" %>
+                </div>
+            <% end %>
+        </div>
     <% end %>
     <div id="tags_breakline"></div>
     <div id="render_view"></div>
@@ -18,6 +21,12 @@
         <div class="modal-body">
             <p class="help_text"></p>
             <ul class="render_texts"></ul>
+            <% if user_signed_in? %>
+            <a href="#" class="delete warning button" rel="nofollow" data-method="delete"
+            data-confirm="你確定要刪除嗎？這個動作無法復原！">
+                刪除此分類
+            </a>
+            <% end %>
         </div>
     </div>
 </div>
