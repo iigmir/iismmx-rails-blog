@@ -1,6 +1,5 @@
 class ArticleTagsController < ApplicationController
     def new
-        @article_tag = ArticleTag.new
     end
     def create
         ArticleTag.create( atag_params )
@@ -8,6 +7,7 @@ class ArticleTagsController < ApplicationController
     end
 
     def index
+        @new_article_tag = ArticleTag.new
         @tags = ArticleTag.all
         respond_to do |format|
             format.json { render json: @tags }
@@ -15,7 +15,9 @@ class ArticleTagsController < ApplicationController
         end
     end
     def show
-        @tagged_articles = ArticleTag.find( params[:id] ).article
+        #@tagged_articles = ArticleTag.find( params[:id] ).article_ids
+        tagged_articles = ArticleTag.articles_under_tag( ArticleTag.find( params[:id] ).article_ids )
+        render json: tagged_articles
     end
 
     def edit

@@ -1,5 +1,9 @@
 <main>
     <% if user_signed_in? %>
+        <%= form_for @new_article_tag do |m| %>
+            <%= m.text_field :title, :required => true , placeholder:"標題" %>
+            <%= m.submit "發送" %>
+        <% end %>
         <p class="text-center"> Hello <strong><%= current_user.email %></strong>. Want to add <a class="text-center" href="/articles/new">new article</a>? </p>
     <% end %>
     <div id="tags_breakline"></div>
@@ -9,17 +13,11 @@
 <div id="articles_modal" class="modal-box hide">
     <div class="modal">
         <span class="close"></span>
-        <div class="modal-header">UI Modal</div>
-        <div class="modal-body">
+        <div class="modal-header clicked_value">
         </div>
-    </div>
-</div>
-
-<div id="action_modal" class="modal-box hide">
-    <div class="modal">
-        <span class="close"></span>
-        <div class="modal-header">Tags action</div>
         <div class="modal-body">
+            <p class="help_text"></p>
+            <ul class="render_texts"></ul>
         </div>
     </div>
 </div>
