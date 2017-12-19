@@ -25,7 +25,7 @@ $(document).ready(function()
             };
 
             btn_tmpview = '<button class="button" data-component="modal" data-target="#articles_modal" data-render-api='
-            + btn_tmpdata.idnum + ">" + ${btn_tmpdata.value} + "</button>";
+            + btn_tmpdata.idnum + ">" + btn_tmpdata.value + "</button>";
             return btn_curr += btn_tmpview;
         });
         
