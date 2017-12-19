@@ -20,7 +20,7 @@ $(document).ready(function()
         {
             var btn_tmpdata, btn_tmpview, btn_html_dataset;
             btn_tmpdata = {
-                idnum: "/article_tags/" + rgo_input.id,
+                idnum: "/categories/" + rgo_input.id,
                 value: rgo_input.tag_name
             };
 
@@ -38,7 +38,7 @@ $(document).ready(function()
             var help_text = "以下文章內容與" + clicked_value + "有關：";
             
             $( "#articles_modal .help_text" ).text( help_text );
-            $( "#articles_modal .clicked_value" ).text( clicked_value );
+            $( "#articles_modal .clicked_value" ).text( clicked_value + " 的分類" );
             $( '#articles_modal a.button[data-method="delete"]' ).attr( "href" , render_api );
 
             $.ajax

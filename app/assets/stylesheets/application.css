@@ -46,11 +46,19 @@ pre
     font-family:monospace;
 }
 
-.previous_page
+
+#tags_breakline
 {
-    margin-right:0.5rem;
+    display: block;
+    margin: 1rem;
 }
-.pagination .current
+
+#render_view button
 {
-    padding:1rem;
+    margin: 3px;
+}
+
+#articles_modal a.button[data-method="delete"]
+{
+    background-color: #C8102E;
 }

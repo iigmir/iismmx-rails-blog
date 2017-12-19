@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213140923) do
+ActiveRecord::Schema.define(version: 20171219180905) do
 
   create_table "article_tags", force: :cascade do |t|
-    t.integer "article_number"
-    t.string  "tag_name"
+    t.integer  "article_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["article_id"], name: "index_article_tags_on_article_id"
+    t.index ["category_id"], name: "index_article_tags_on_category_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -25,24 +29,8 @@ ActiveRecord::Schema.define(version: 20171213140923) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer  "article_id"
-    t.integer  "article_tag_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["article_id"], name: "index_categories_on_article_id"
-    t.index ["article_tag_id"], name: "index_categories_on_article_tag_id"
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
+    t.integer "article_number"
+    t.string  "tag_name"
   end
 
   create_table "mylinks", force: :cascade do |t|

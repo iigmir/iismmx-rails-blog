@@ -9,6 +9,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += [ %w( mylinks.css ) , %w( articles.css ) , %w( article_tags.css ) ]
-Rails.application.config.assets.precompile += [ %w( mylinks.js ) , %w( articles.js ) , %w( article_tags.js ) ]
-Rails.application.config.assets.precompile += %w( ckeditor/* ckeditor/lang/*  )
+Rails.application.config.assets.precompile += [ %w( mylinks.css ) , %w( articles.css ) , %w( article_tags.css ) , %w( categories.css ) ]
+Rails.application.config.assets.precompile += [ %w( mylinks.js ) , %w( articles.js ) , %w( article_tags.js ) , %w( categories.js ) ]

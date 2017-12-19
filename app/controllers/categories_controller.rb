@@ -1,4 +1,4 @@
-class ArticleTagsController < ApplicationController
+class CategoriesController < ApplicationController
     def new
     end
     def create
@@ -8,14 +8,13 @@ class ArticleTagsController < ApplicationController
 
     def index
         @new_cata = Category.new
-        @tags = Category.all
+        tags = Category.all
         respond_to do |format|
-            format.json { render json: @tags }
+            format.json { render json: tags }
             format.html { render :index }  
         end
     end
     def show
-        #@tagged_articles = Category.find( params[:id] ).article_ids
         tagged_articles = Category.articles_under_tag( Category.find( params[:id] ).article_ids )
         render json: tagged_articles
     end
@@ -37,6 +36,6 @@ class ArticleTagsController < ApplicationController
 
     private
     def atag_params
-        params.require(:categories).permit(:tag_name)
+        params.require(:category).permit(:tag_name)
     end
 end

@@ -24,10 +24,6 @@
     </main>
 <% end %>
 
-<%= content_for :js_plugins do %>
-    <%= javascript_include_tag Ckeditor.cdn_url %>
-<% end %>
-
 <%= content_for :js_custom do %>
 <script>
     var simplemde = new SimpleMDE({ element: $("#article_context")[0] });
