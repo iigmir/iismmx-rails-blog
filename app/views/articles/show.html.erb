@@ -11,7 +11,7 @@
             </p>
         </div>
         <div class="article_context">
-            <%= sanitize(a.context) %>
+            <%= raw( @markdown.render( a.context ) ) %>
         </div>
     </article>
 </main>

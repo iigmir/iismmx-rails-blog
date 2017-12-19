@@ -1,8 +1,3 @@
-<%= content_for :css_custom do %>
-    .checkarea td *{display:inline-block;}
-    button{margin: 1rem;}
-<% end %>
-
 <%= form_for @article do |m| %>
     <main>
         <table>
@@ -15,7 +10,7 @@
                     <%= m.label :context %>
                 </td>
                 <td>
-                    <%= m.cktext_area :context, cols:40 %>
+                    <%= m.text_area :context, cols:40 %>
                     <%#= language often: en-gb,ja,zh-tw %>
                 </td>
             </tr>
@@ -35,12 +30,6 @@
 
 <%= content_for :js_custom do %>
 <script>
-    var editor_visibility = $( "#article_context" ).css( "visibility" );
-    if ( editor_visibility == "hidden" )
-    {
-        $( "#article_context" ).css( "visibility" , "visible" );
-        console.log( "There's issue about ckeditor. Before issue fixed, please use ckeditor via website:" );
-        console.log( "http://sdk.ckeditor.com/samples/uilanguages.html" );
-    }
+    var simplemde = new SimpleMDE({ element: $("#article_context")[0] });
 </script>
 <% end %>

@@ -8,6 +8,7 @@
         <meta name="keywords" content="Ruby on Rails,Web development,Front-end development" />
         <%= csrf_meta_tags %>
         <%= stylesheet_link_tag 'application', media: 'all' %>
+        <link rel="stylesheet" href="assets/simplemde.min.css">
         <%= stylesheet_link_tag params[:controller] %>
     </head>
     <body id="<%= controller.controller_name %>_<%= controller.action_name %>">
@@ -27,6 +28,7 @@
         <p class="<%= devise_msg_class %>"><%= devise_msg_text %></p>
         <%= yield %>
         <%= javascript_include_tag 'application', controller_name %>
+        <script src="assets/simplemde.min.js"></script>
         <%= yield(:js_plugins) %>
         <%= yield(:js_custom) %>
     </body>

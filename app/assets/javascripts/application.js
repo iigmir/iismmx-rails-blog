@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ckeditor/init
-//= require ckeditor/ckeditor
 //= require kube.min
+//= require simplemde.min
 //= require_self

@@ -7,9 +7,12 @@ class ArticlesController < ApplicationController
   end
   def show
     @article = Article.find_by_id(params[:id])
-    #if @article == nil
-    #  redirect_to articles_path
-    #end
+    @markdown = Redcarpet::Markdown.new( Redcarpet::Render::HTML.new(filter_html: false) , )
+    #Redcarpet::Markdown.new(
+        #Redcarpet::Render::HTML.new()
+        #autolink: true, tables: true, superscript: true,
+        #underline: true, highlight: true , footnotes: true
+    #)
   end
 
   # C for CRUD
