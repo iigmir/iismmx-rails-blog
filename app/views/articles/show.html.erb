@@ -1,7 +1,7 @@
 <% a = @article %>
 <main>
     <article>
-        <div class="article_info">
+        <div class="article_info breakline">
             <h2> <%= a.title %> </h2>
             <p style="padding-left:1rem;">
                 <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b> <br />
@@ -10,8 +10,20 @@
                 <% end %>
             </p>
         </div>
-        <div class="article_context">
+        <div class="article_context breakline">
             <%= raw( @markdown.render( a.context ) ) %>
+        </div>
+        <div class="category">
+            <% if user_signed_in? %>
+            <div class="help">
+                <h3>這篇文章屬於以下目錄：</h3>
+                <a href="#" class="small button">編輯分類</a>
+            </div>
+            <% end %>
+            <div class="label_area">
+                <span class="label">Default</span>
+                <span class="label">Causes</span>
+            </div>
         </div>
     </article>
 </main>
