@@ -3,6 +3,7 @@ class MylinksController < ApplicationController
   # C
   def new
     @link = Mylink.new
+    render layout: false
   end
   def create
     Mylink.create( link_params )
@@ -17,6 +18,7 @@ class MylinksController < ApplicationController
   # U
   def edit
     @link = Mylink.find(params[:id])
+    render layout: false
   end
   def update
     @link = Mylink.find(params[:id])

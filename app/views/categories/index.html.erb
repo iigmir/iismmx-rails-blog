@@ -7,11 +7,11 @@
                     <%= t.submit "新增分類" %>
                 </div>
             <% end %>
-
         </div>
     <% end %>
     <div id="tags_breakline"></div>
     <div id="render_view"></div>
+    <%= render "layouts/ajaxfail", costom_classes: "index" %>
 </main>
 
 <div id="articles_modal" class="modal-box hide">
@@ -22,6 +22,7 @@
         <div class="modal-body">
             <p class="help_text"></p>
             <ul class="render_texts"></ul>
+            <%= render "layouts/ajaxfail", costom_classes: "show" %>
             <% if user_signed_in? %>
             <a href="#" class="delete warning button" rel="nofollow" data-method="delete"
             data-confirm="你確定要刪除嗎？這個動作無法復原！">

@@ -11,11 +11,7 @@
     <% end %>
     <div id="tags_breakline"></div>
     <div id="render_view"></div>
-    <div class="index ajaxfail hide">
-        : - (<br />
-        看起來頁面載入失敗了噢，我會去修。<br />
-        如果有興趣也可以查瀏覽器工具，看發生了什麼事。
-    </div>
+    <%= render "layouts/ajaxfail", locals: { costom_classes: "index" } %>
 </main>
 
 <div id="articles_modal" class="modal-box hide">
