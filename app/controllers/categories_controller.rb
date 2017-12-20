@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     end
     def create
         Category.create( atag_params )
-        redirect_to article_tags_path
+        redirect_to categories_path
     end
 
     def index
@@ -25,13 +25,13 @@ class CategoriesController < ApplicationController
     def update
         @article = Category.find(params[:id])
         @article.update_attributes(art_params)
-        redirect_to article_tags_path
+        redirect_to categories_path
     end
 
     def destroy
         article_pending_del = Category.find(params[:id])
         article_pending_del.destroy
-        redirect_to article_tags_path
+        redirect_to categories_path
     end
 
     private

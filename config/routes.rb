@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
     devise_for :users
-    resources :articles
     resources :mylinks
-    resources :article_tags
+    resources :articles
     resources :categories
     root "articles#index"
     get '*path' => redirect('/')

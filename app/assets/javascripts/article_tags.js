@@ -2,11 +2,12 @@ $(document).ready(function()
 {
     $.ajax
     ({
-        url: "/article_tags.json",
+        url: "/categories.json",
         dataType: "json",
         error: function(jqXHR, textStatus, errorThrown)
         {
-            $("#render_view").val( "error message: " + errorThrown );
+            $("div.index.ajaxfail").removeClass("hide");
+            console.log([jqXHR, textStatus, errorThrown]);
             return;
         },
         success: function(data) { init_render( data );return; }
@@ -47,7 +48,8 @@ $(document).ready(function()
                 dataType: "json",
                 error: function(jqXHR, textStatus, errorThrown)
                 {
-                    $( "#articles_modal .render_texts" ).html( "<li>Error message: " + errorThrown + "</li>" );
+                    $("div.show.ajaxfail").removeClass("hide");
+                    console.log([jqXHR, textStatus, errorThrown]);
                     return;
                 },
                 success: function(data) { catagroy_render( data );return; }
@@ -60,11 +62,19 @@ $(document).ready(function()
     function catagroy_render( cr_input )
     {
         var render_templete = "";
-        cr_input.forEach(function( rgo_input )
+        if ( cr_input.length > 0 )
         {
-            render_templete += '<li><a href="articles/' + rgo_input.id + ">" + rgo_input.title +
-            "</a> </li>";
-        });
+            cr_input.forEach(function( rgo_input )
+            {
+                render_templete += '<li><a href="articles/'
+                    + rgo_input.id + ">" + rgo_input.title +
+                "</a> </li>";
+            });
+        }
+        else
+        {
+            render_templete = "<li> 目前還沒有屬於這個分類的條目 ＠＠ </li>";
+        }
         $( "#articles_modal .render_texts" ).html( render_templete );
         return;
     }
