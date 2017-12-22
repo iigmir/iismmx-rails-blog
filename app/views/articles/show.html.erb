@@ -14,15 +14,11 @@
             <%= raw( @markdown.render( a.context ) ) %>
         </div>
         <div class="category">
-            <% if user_signed_in? %>
             <div class="help">
                 <h3>這篇文章屬於以下目錄：</h3>
-                <a href="#" class="small button">編輯分類</a>
             </div>
-            <% end %>
             <div class="label_area">
-                <span class="label">Default</span>
-                <span class="label">Causes</span>
+                <span class="hide label">Causes</span>
             </div>
         </div>
     </article>

@@ -28,7 +28,7 @@
         <p class="<%= devise_msg_class %>"><%= devise_msg_text %></p>
         <%= yield %>
         <%= javascript_include_tag 'application', controller_name %>
-        <script src="assets/simplemde.min.js"></script>
+        <%= javascript_include_tag "simplemde.min" %>
         <%= yield(:js_plugins) %>
         <%= yield(:js_custom) %>
     </body>

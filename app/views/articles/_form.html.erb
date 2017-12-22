@@ -10,7 +10,7 @@
             <%= m.hidden_field "category_ids" %>
             <div class="append view">
                 <select></select>
-                <button type="button" class="button">新增</button>
+                <button type="button" class="add button">新增</button>
             </div>
             <div class="label_viiew"></div>
             <%= render "layouts/ajaxfail", costom_classes: "" %>
@@ -26,76 +26,6 @@
     </main>
 <% end %>
 
-<%= content_for :js_custom do %>
-<script>
-    var simplemde = new SimpleMDE({
-        element: document.getElementById("article_context"),
-        toolbar: ["preview","guide","|",
-        "bold", "italic", "heading", "|",
-        "link", "code", "quote", "strikethrough", "|",
-        "unordered-list","ordered-list","table", "|",
-        "horizontal-rule","clean-block"],
-        spellChecker: false,
-        status: false
-    });
-
-    $.ajax({
-        url:"/categories.json",
-        dataType: "json",
-        error: function(jqXHR, textStatus, errorThrown)
-        {
-            $("#select_category div.append.view").addClass("hide");
-            $("#select_category div.ajaxfail").removeClass("hide");
-            console.log([jqXHR, textStatus, errorThrown]);
-            return;
-        },
-        success: function(data){add_option_actions(data);}
-    });
-
-    function add_option_actions(aoa)
-    {
-        // Render select options part
-        var options = "";
-        if(aoa.length>0)
-        {
-            aoa.forEach(function( odval )
-            {
-                options += "<option value='" + odval.id + "'>" + odval.tag_name + "</option>";
-            });
-        }
-        else
-        {
-            $("#select_category div.ajaxfail").html("看起來目錄還沒設定喔 :-)");
-            $("#select_category div.append.view").addClass("hide");
-            $("#select_category div.ajaxfail").removeClass("hide");
-        }
-        $("#select_category .view select").html(options);
-
-        // Render categories part
-        var category_array = $("input#article_category_ids").val().split(" ");
-        category_label_render( category_array , aoa );
-        return;
-    }
-
-    function category_label_render( clr_main , clr_refer )
-    {
-        if ( clr_main.length > 0 )
-        {
-            var tempelte = "";
-            clr_main.forEach(function( clrmain_value )
-            {
-                var clr_current_tag = clr_refer.filter(function(element)
-                {
-                    var panding_tag_number = parseInt(element["id"]);
-                    var current_number = parseInt(clrmain_value);
-                    return current_number == panding_tag_number;
-                })[0];
-                tempelte += "<span class='label' data-num='" + clr_current_tag['id'] + "'>" + clr_current_tag.tag_name + "</span>";
-            });
-            debugger;
-            $("#select_category .label_viiew").html(tempelte);
-        }
-        return;
-    }
-</script>
+<%= content_for :js_plugins do %>
+    <%= javascript_include_tag "article_form" %>
 <% end %>

@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
     def update
+        byebug
         @article = Article.find(params[:id])
         @article.update_attributes(art_params)
         redirect_to article_path(@article)
@@ -45,6 +46,6 @@ class ArticlesController < ApplicationController
 
     private
     def art_params
-        params.require(:article).permit(:title, :context)
+        params.require(:article).permit(:title, :context, :article_category_ids)
     end
 end

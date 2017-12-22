@@ -8,22 +8,40 @@
     margin-bottom: 1rem;
 }
 
-.category .help
+.category
 {
-    h3
+    .help
     {
-        display: inline-block;
-        margin-bottom: 0;
+        h3
+        {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+    }
+    .button
+    {
+        margin-bottom: 8px;
     }
 }
 
-.category .button
+.label_viiew *
 {
-    margin-bottom: 8px;
+    margin: 5px;
+}
+
+#select_category .label_viiew .close { cursor: pointer; }
+
+.previous_page
+{
+    margin-right:0.5rem;
+}
+.pagination .current
+{
+    padding:1rem;
 }
 
 @media (min-width:700px)
-{
+{   // RWD service
     #articles_index ul
     {
         li
@@ -40,13 +58,4 @@
     }
     li span br{ display:none; }
     article .article_context{ padding-left: 2rem; }
-}
-
-.previous_page
-{
-    margin-right:0.5rem;
-}
-.pagination .current
-{
-    padding:1rem;
 }
