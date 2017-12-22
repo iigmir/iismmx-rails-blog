@@ -81,18 +81,18 @@
     {
         if ( clr_main.length > 0 )
         {
-            var clrref = clr_refer.filter(function(val, index, array) {
-                return val.id === 4;
-            });
             var tempelte = "";
-            clr_main.forEach(function( clrval )
+            clr_main.forEach(function( clrmain_value )
             {
-                var clrref = clr_refer.filter(function(val, index, array) {
-                    return val.id === 4;
-                });
-                //debugger;
-                tempelte += "<span class='label' data-num='" + clrref[0].id + "'>" + clrref[0].id + "</span>";
+                var clr_current_tag = clr_refer.filter(function(element)
+                {
+                    var panding_tag_number = parseInt(element["id"]);
+                    var current_number = parseInt(clrmain_value);
+                    return current_number == panding_tag_number;
+                })[0];
+                tempelte += "<span class='label' data-num='" + clr_current_tag['id'] + "'>" + clr_current_tag.tag_name + "</span>";
             });
+            debugger;
             $("#select_category .label_viiew").html(tempelte);
         }
         return;
