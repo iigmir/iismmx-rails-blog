@@ -8,7 +8,7 @@ var simplemde = new SimpleMDE({
     spellChecker: false,
     status: false
 });
-
+/*
 $.ajax({
     url:"/categories.json",
     dataType: "json",
@@ -30,7 +30,7 @@ $.ajax({
         $("#select_category .label_viiew .close").click(function(ev) {delete_category(ev,article_category_ids,data)});
     }
 });
-
+*/
 function nothing_here( nothing_what )
 {
     return " 看起來" + nothing_what + "還沒設定喔 :-) ";

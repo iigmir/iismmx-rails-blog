@@ -4,17 +4,6 @@
             <%= m.label :title , "標題" %>
             <%= m.text_field :title, :required => true %>
         </div>
-        <div id="select_category" class="form-item">
-            <%= m.label :category_ids , "目錄" %>
-            <%#= m.text_field :category_ids %>
-            <%= m.hidden_field "category_ids" %>
-            <div class="append view">
-                <select></select>
-                <button type="button" class="add button">新增</button>
-            </div>
-            <div class="label_viiew"></div>
-            <%= render "layouts/ajaxfail", costom_classes: "" %>
-        </div>
         <div class="form-item">
             <%= m.label :context , "內文" %>
             <%= m.text_area :context, :required => true %>
