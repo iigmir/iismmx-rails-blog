@@ -11,54 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require kube
+ *= require core
  *= require navbar
  *= require_self
  *= require font-awesome
  *= require simplemde.min
  */
-
-body
-{
-    background-color: #d6ccca;
-    padding:1rem;
-}
-
-main
-{
-    max-width:960px;
-    margin:0 auto;
-}
-
-h1 a, h2 a
-{
-    color: #003399;
-}
-
-.context
-{
-    padding-left:2rem;
-}
-
-pre
-{
-    background:#300A24;
-    color:#FFFFFF;
-    font-family:monospace;
-}
-
-
-#tags_breakline
-{
-    display: block;
-    margin: 1rem;
-}
-
-#render_view button
-{
-    margin: 3px;
-}
-
-#articles_modal a.button[data-method="delete"]
-{
-    background-color: #C8102E;
-}

@@ -24,12 +24,10 @@
     }
 }
 
-.label_viiew *
+.label_view *
 {
     margin: 5px;
 }
-
-#select_category .label_viiew .close { cursor: pointer; }
 
 .previous_page
 {
@@ -38,6 +36,16 @@
 .pagination .current
 {
     padding:1rem;
+}
+
+.context
+{
+    padding-left:2rem;
+}
+
+#articles_modal a.button[data-method="delete"]
+{
+    background-color: #C8102E;
 }
 
 @media (min-width:700px)
