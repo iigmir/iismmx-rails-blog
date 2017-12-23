@@ -27,6 +27,11 @@
         %>
         <p class="<%= devise_msg_class %>"><%= devise_msg_text %></p>
         <%= yield %>
+        <div class="hide ajax-waiting">
+            <div class="draws">
+                <p>資料處理中…</p>
+            </div>
+        </div>
         <%= javascript_include_tag 'application', controller_name %>
         <%= javascript_include_tag "simplemde.min" %>
         <%= yield(:js_plugins) %>
