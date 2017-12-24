@@ -13,13 +13,36 @@
         <div class="article_context breakline">
             <%= raw( @markdown.render( a.context ) ) %>
         </div>
-        <div class="category">
+        <div class="hide category" data-ajax-request-id="<%= params[:id] %>">
             <div class="help">
                 <h3>這篇文章屬於以下目錄：</h3>
+                <button data-component="modal" data-target="#select_category">Open</button>
             </div>
-            <div class="label_area">
+            <div class="label_view">
                 <span class="hide label">Causes</span>
             </div>
+            <%= render "layouts/ajaxfail", costom_classes: "show" %>
         </div>
     </article>
 </main>
+
+<div id="select_category" class="modal-box hide">
+    <div class="modal">
+        <div class="modal-header">分類後台</div>
+        <div class="modal-body">
+            <div class="form-item">
+                <div class="append">
+                    <select></select>
+                    <button class="add button">新增</button>
+                </div>
+            </div>
+            
+            <ul class="label_view"></ul>
+            <button type="button">儲存分類</button>
+        </div>
+    </div>
+</div>
+
+<%= content_for :js_plugins do %>
+    <%= javascript_include_tag "article_form" %>
+<% end %>

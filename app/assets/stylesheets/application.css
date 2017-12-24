@@ -13,7 +13,7 @@
  *= require kube
  *= require core
  *= require navbar
- *= require_self
  *= require font-awesome
  *= require simplemde.min
+ *= require_self
  */

@@ -63,6 +63,7 @@ pre
         background-size: 400% 400%;
         border-radius: 50%;
         animation: eng 1.8s ease infinite;
+
         p
         {
             padding-top:45%;
@@ -72,3 +73,8 @@ pre
     }
 }
 
+.click.close,
+.click.fa-times
+{
+    cursor: pointer;
+}
