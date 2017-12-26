@@ -12,9 +12,7 @@ class CategoryRelationsController < ApplicationController
         render json: outputs
     end
     def update
-        # Give Article number, get [1,2,3] back
-        given_categories = params[:cate_id]
-        byebug
-        render json: tagged_articles
+        new_cate = Article.change_article_categories( params[:id] , params[:cate_id] )
+        render json: new_cate
     end
 end

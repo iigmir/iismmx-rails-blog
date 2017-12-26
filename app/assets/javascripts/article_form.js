@@ -48,45 +48,7 @@ $(document).ready(function()
     {
         var all_categories = x;
         var current_categories = y;
-        console.log([current_categories , all_categories]);
-        function nothing_here( nothing_what )
-        {
-            return " 看起來" + nothing_what + "還沒設定喔 :-) ";
-        }
-
-        function category_select_render( csr_input_data )
-        {   // Give all_categories
-            var csr_tmp = "";
-            //debugger;
-            csr_input_data.forEach(function(v)
-            {
-                csr_tmp += "<option value='" +v.id+ "'>" +v.tag_name+ "</option>";
-            });
-            $("#select_category select").html(csr_tmp);
-        }
-
-        function category_label_render( clr_current_cate )
-        {   // Generate category labels in article
-            //debugger;
-            if ( clr_current_cate.length > 0 )
-            {   // If not empty
-                var show_tempelte  = "";
-                var modal_tempelte = "";
-                clr_current_cate.forEach(function( clrval )
-                {
-                    var current_category = all_categories.filter(function(dhnzcx){ return dhnzcx.id == clrval; })[0];
-                    show_tempelte  += "<span class='label'>" + current_category.tag_name + "</span>";
-                    modal_tempelte += "<li><i class='click fa fa-times' data-category-api='" +current_category.id+ "'></i>" + current_category.tag_name + "</li>";
-                });
-                $( "article .category .label_view"  ).html(show_tempelte );
-                $( "#select_category ul.label_view" ).html(modal_tempelte);
-            }
-            else
-            {
-                $( "article .category .label_view" ).html(nothing_here( "分類" ));
-            }
-            return;
-        }
+        // console.log([current_categories , all_categories]);
 
         function add_options_render( aor_input )
         {   // generate <option> that user can add category
@@ -107,58 +69,98 @@ $(document).ready(function()
             return;
         }
 
-        function add_category( ac_list )
-        {   // Add value to current category array, then sort it.
-            var selected_value = parseInt( $("#select_category option[selected]").val() );
-            var list_not_dep = ac_list.filter(function(c){ return c === selected_value; }).length === 0;
-            if( x )
+        function nothing_here( nothing_what )
+        {
+            return " 看起來" + nothing_what + "還沒設定喔 :-) ";
+        }
+
+        function category_select_render( csr_all_cate )
+        {   // Give all_categories
+            var csr_tmp = "";
+            csr_all_cate.forEach(function(v)
             {
-                ac_list.push(selected_value);
-                ac_list.sort(function(x,y){return x-y;})
+                csr_tmp += "<option value='" +v.id+ "'>" +v.tag_name+ "</option>";
+            });
+            $("#select_category select").html(csr_tmp);
+        }
+
+        function category_label_render( clr_current_cate )
+        {   // Generate category labels in article
+            //debugger;
+            if ( clr_current_cate.length > 0 )
+            {   // If not empty
+                var show_tempelte  = "";
+                var modal_tempelte = "";
+                clr_current_cate.forEach(function( clrval )
+                {
+                    var current_category = all_categories.filter(function(dhnzcx){ return dhnzcx.id == clrval; })[0];
+                    show_tempelte  += "<span class='label'>" + current_category.tag_name + "</span>";
+                    modal_tempelte += "<li><i class='click fa fa-times remove_request' data-category-api='" +current_category.id+ "'></i>" + current_category.tag_name + "</li>";
+                });
+                $( "article .category .label_view"  ).html(show_tempelte );
+                $( "#select_category ul.label_view" ).html(modal_tempelte);
             }
-            debugger;
-            category_label_render( ac_list );
+            else
+            {
+                $( "article .category .label_view" ).html(nothing_here( "分類" ));
+            }
+            return;
+        }
+
+        function add_category( ac_current_categroies , ac_clicked_dom )
+        {   // Add value to current category array, then sort it.
+            //var selected_value = parseInt( $("#select_category option").val() , 10 );
+            var selected_value = parseInt( ac_clicked_dom , 10 );
+            var not_repeat_in_list = ac_current_categroies.filter(function(c){ return c === selected_value; }).length === 0;
+            if( not_repeat_in_list )
+            {
+                ac_current_categroies.push(selected_value);
+                ac_current_categroies.sort(function(x,y){return x-y;});
+            }
+            current_categories = ac_current_categroies;
+            category_label_render( current_categories );
             $("#select_category .warning.message").removeClass("hide");
             return;
         }
 
         function delete_category( clicked_dom , dc_input_array )
         {   // Delete value, then sort array
-            var panding_delete = parseInt( clicked_dom.currentTarget.dataset.num , 10 );
+            var panding_delete = parseInt( clicked_dom.currentTarget.dataset.categoryApi , 10 );
             var dc_new_array = dc_input_array.filter(function (val)
-            {
+            {   // A array that don't have selected("deleted") value
                 return val != panding_delete;
             });
             if( dc_new_array.length > 0 )
             {
-                dc_new_array.sort(function(x,y){return x-y;})
+                dc_new_array.sort(function(x,y){return x-y;});
             }
-            //console.log(dc_new_array);
-            category_label_render( dc_new_array );
+            current_categories = dc_new_array;
+            category_label_render( current_categories );
             $("#select_category .warning.message").removeClass("hide");
             return;
         }
 
         function category_ajax(ca_input)
         {
-            //console.log(ca_input);
             $("div.ajax-waiting").removeClass("hide");
             $.ajax({
                 url:"/category_relations/" + current_article_id,
-                data:ca_input,
+                data:{ cate_id : ca_input },
                 method:"PATCH",
                 done: function()
                 {
-                    $("div.ajax-waiting").addClass("hide");
+                    
                 },
                 error: function(jqXHR, textStatus, errorThrown)
                 {
-                    alert("伺服器錯誤，資料並未被傳送！");
+                    alert("資料更新失敗！");
+                    $("div.ajax-waiting").addClass("hide");
                     console.log([jqXHR, textStatus, errorThrown]);
                 },
                 success: function(aca)
                 {
                     $("#select_category .warning.message").addClass("hide");
+                    $("div.ajax-waiting").addClass("hide");
                     alert("資料傳送成功！");
                     get_all_categories();
                 }
@@ -166,13 +168,18 @@ $(document).ready(function()
             return;
         }
         // Render
-        category_label_render( current_categories );
         category_select_render( all_categories );
-        //add_options_render( all_categories );
+        category_label_render( current_categories );
         // Actions
-        $("#select_category button.add").click(function(){add_category(current_categories)});
-        $("#select_category .label_viiew .fa-times").click(function(e){delete_category(eev,current_categories)});
-        $("#select_category button.save").click(function(){category_ajax(current_categories)});
+        $("#select_category button.add").click(function() {
+            add_category( current_categories, $("#select_category select").val() );
+        });
+        $("#select_category .label_view .remove_request").click(function(ev) {
+            delete_category(ev,current_categories);
+        });
+        $("#select_category button.save").click(function() {
+            category_ajax(current_categories);
+        });
         return;
     }
     get_all_categories();

@@ -34,7 +34,7 @@ $(document).ready(function()
 
         $('#render_view .button').click(function (event)
         {   // What the fucking AJAX...Fucking work in fucking AJAX?
-            var clicked_value = event.target.innerHTML;
+            var clicked_value = event.target.innerText;
             var render_api = event.target.dataset.renderApi;
             var help_text = "以下文章內容與" + clicked_value + "有關：";
             
@@ -52,7 +52,11 @@ $(document).ready(function()
                     console.log([jqXHR, textStatus, errorThrown]);
                     return;
                 },
-                success: function(data) { catagroy_render( data );return; }
+                success: function(data) {
+                    catagroy_render( data );
+                    //debugger;
+                    return;
+                }
             });
         });
 
@@ -66,9 +70,7 @@ $(document).ready(function()
         {
             cr_input.forEach(function( rgo_input )
             {
-                render_templete += '<li><a href="articles/'
-                    + rgo_input.id + ">" + rgo_input.title +
-                "</a> </li>";
+                render_templete += "<li><a href='/articles/" +rgo_input.id+ "'>" +rgo_input.title+ "</a></li>";
             });
         }
         else
