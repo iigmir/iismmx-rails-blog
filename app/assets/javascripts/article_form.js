@@ -1,42 +1,44 @@
 $(document).ready(function()
 {
-    var main_dom = "article .category ";
-    function get_current_categories()
-    {   // First AJAX call
-        var current_article_id = $("div[data-ajax-request-id]").attr("data-ajax-request-id");
-        $.ajax({
-            url:"/category_relations/" + current_article_id + ".json",
-            dataType: "json",
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-                $( main_dom + "div.ajaxfail" ).removeClass("hide");
-                console.log([jqXHR, textStatus, errorThrown]);
-                return;
-            },
-            success: function(current_categories)
-            {
-                get_all_categories( current_categories );
-            }
-        });
-        return;
-    }
-
-    function get_all_categories( gaccc )
-    {   // Second AJAX call
+    // var main_dom = "article .category ";
+    var current_article_id = $("div[data-ajax-request-id]").attr("data-ajax-request-id");
+    function get_all_categories()
+    {
         $.ajax({
             url:"/categories.json",
             dataType:"json",
             method:"GET",
             error: function(jqXHR, textStatus, errorThrown)
             {
-                $( main_dom + "div.ajaxfail" ).removeClass("hide");
+                $( "article .category div.ajaxfail" ).removeClass("hide");
                 alert("Error");
                 console.log([jqXHR, textStatus, errorThrown]);
                 return "error";
             },
             success: function(aca)
             {
-                main_program(gaccc,aca);
+                //debugger;
+                get_current_categories(aca);
+            }
+        });
+        return;
+    }
+
+    function get_current_categories( allcat )
+    {
+        $.ajax({
+            url:"/category_relations/" + current_article_id + ".json",
+            dataType: "json",
+            error: function(jqXHR, textStatus, errorThrown)
+            {
+                $( "article .category div.ajaxfail" ).removeClass("hide");
+                console.log([jqXHR, textStatus, errorThrown]);
+                return;
+            },
+            success: function(currc)
+            {
+                //debugger;
+                main_program(allcat,currc);
             }
         });
         return;
@@ -44,10 +46,9 @@ $(document).ready(function()
 
     function main_program( x , y )
     {
-        var current_categories = x;
-        var all_categories = y;
+        var all_categories = x;
+        var current_categories = y;
         console.log([current_categories , all_categories]);
-
         function nothing_here( nothing_what )
         {
             return " 看起來" + nothing_what + "還沒設定喔 :-) ";
@@ -56,6 +57,7 @@ $(document).ready(function()
         function category_select_render( csr_input_data )
         {   // Give all_categories
             var csr_tmp = "";
+            //debugger;
             csr_input_data.forEach(function(v)
             {
                 csr_tmp += "<option value='" +v.id+ "'>" +v.tag_name+ "</option>";
@@ -65,15 +67,16 @@ $(document).ready(function()
 
         function category_label_render( clr_current_cate )
         {   // Generate category labels in article
+            //debugger;
             if ( clr_current_cate.length > 0 )
             {   // If not empty
                 var show_tempelte  = "";
                 var modal_tempelte = "";
                 clr_current_cate.forEach(function( clrval )
                 {
-                    var current_category = all_categories.filter(function(dhnzcx){ return dhnzcx.id == clrval; });
-                    show_tempelte  += "<span class='label'>" + clrval.tag_name + "</span>";
-                    modal_tempelte += "<li><i class='click fa fa-times' data-category-api='" +clrval.id+ "'></i>" + clrval.tag_name + "</li>";
+                    var current_category = all_categories.filter(function(dhnzcx){ return dhnzcx.id == clrval; })[0];
+                    show_tempelte  += "<span class='label'>" + current_category.tag_name + "</span>";
+                    modal_tempelte += "<li><i class='click fa fa-times' data-category-api='" +current_category.id+ "'></i>" + current_category.tag_name + "</li>";
                 });
                 $( "article .category .label_view"  ).html(show_tempelte );
                 $( "#select_category ul.label_view" ).html(modal_tempelte);
@@ -94,13 +97,13 @@ $(document).ready(function()
                 {
                     options += "<option value='" +o.id+ "'>" + o.tag_name + "</option>";
                 });
+                $("#select_category .view select").html(options);
             }
             else
             {
                 $("#select_category div.append.view").addClass("hide");
                 $("#select_category div.ajaxfail").html(nothing_here( "目錄" )).removeClass("hide");
             }
-            $("#select_category .view select").html(options);
             return;
         }
 
@@ -113,8 +116,9 @@ $(document).ready(function()
                 ac_list.push(selected_value);
                 ac_list.sort(function(x,y){return x-y;})
             }
-            //debugger;
+            debugger;
             category_label_render( ac_list );
+            $("#select_category .warning.message").removeClass("hide");
             return;
         }
 
@@ -131,24 +135,46 @@ $(document).ready(function()
             }
             //console.log(dc_new_array);
             category_label_render( dc_new_array );
+            $("#select_category .warning.message").removeClass("hide");
             return;
         }
 
         function category_ajax(ca_input)
         {
-            console.log(ca_input);
+            //console.log(ca_input);
+            $("div.ajax-waiting").removeClass("hide");
+            $.ajax({
+                url:"/category_relations/" + current_article_id,
+                data:ca_input,
+                method:"PATCH",
+                done: function()
+                {
+                    $("div.ajax-waiting").addClass("hide");
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert("伺服器錯誤，資料並未被傳送！");
+                    console.log([jqXHR, textStatus, errorThrown]);
+                },
+                success: function(aca)
+                {
+                    $("#select_category .warning.message").addClass("hide");
+                    alert("資料傳送成功！");
+                    get_all_categories();
+                }
+            });
             return;
         }
         // Render
         category_label_render( current_categories );
         category_select_render( all_categories );
+        //add_options_render( all_categories );
         // Actions
         $("#select_category button.add").click(function(){add_category(current_categories)});
         $("#select_category .label_viiew .fa-times").click(function(e){delete_category(eev,current_categories)});
+        $("#select_category button.save").click(function(){category_ajax(current_categories)});
         return;
     }
-
-    
-    get_current_categories();
+    get_all_categories();
     return;
 });
