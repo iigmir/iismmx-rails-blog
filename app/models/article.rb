@@ -11,7 +11,6 @@ class Article < ApplicationRecord
             new_array.push( i.to_i )
         end
         Article.find(cac_article_id).category_ids = new_array
-        #byebug
         return new_array
     end
 end
