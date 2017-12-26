@@ -2,14 +2,14 @@
     <main>
         <div class="form-item">
             <%= m.label :title , "標題" %>
-            <%= m.text_field :title, :required => true %>
+            <%= m.text_field :title %>
         </div>
         <div class="form-item">
             <%= m.label :context , "內文" %>
-            <%= m.text_area :context, :required => true %>
+            <%= m.text_area :context %>
         </div>
         <div class="form-item">
-            <%= m.submit "送出文章" , class: "button"  %>
+            <%= m.submit "送出文章" , class: "button" %>
             <%= link_to '取消', @article , class: "secondary outline button" %>
         </div>
     </main>

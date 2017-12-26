@@ -6,7 +6,7 @@
             <p style="padding-left:1rem;">
                 <b> Created:<%= a.created_at %>, Last updated: <%= a.updated_at %> </b> <br />
                 <% if user_signed_in? %>
-                    Hello there. Want to <a class="text-center" href="/articles/new">add new article</a>, <%= link_to 'edit this article',  edit_article_url(a.id) %>, or <%= link_to 'delete Posting(DANGER!)', article_path(a.id), method: :delete, class:"error", data: {confirm: 'Are you sure? THIS ARTICLE WILL DISAPPEAR FOREVER!'} %>?
+                    請問想<a class="text-center" href="/articles/new">寫新文章</a>、<%= link_to '編輯這篇文章',  edit_article_url(a.id) %>、還是想<%= link_to '刪除這篇文章', article_path(a.id), method: :delete, class:"error", data: {confirm: '注意，這篇文章會永遠消失！你還是要刪除嗎？'} %>呢？
                 <% end %>
             </p>
         </div>
@@ -20,9 +20,6 @@
                 <% if user_signed_in? %>
                 <button data-component="modal" data-target="#select_category">編輯</button>
                 <% end %>
-            </div>
-            <div class="label_view">
-                <span class="hide label">Causes</span>
             </div>
             <%= render "layouts/ajaxfail", costom_classes: "show" %>
         </div>
