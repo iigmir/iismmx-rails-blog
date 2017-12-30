@@ -17,6 +17,7 @@
         <div class="category" data-ajax-request-id="<%= params[:id] %>">
             <div class="help">
                 <h3>這篇文章屬於以下目錄：</h3>
+                <div class="label_view"></div>
                 <% if user_signed_in? %>
                 <button data-component="modal" data-target="#select_category">編輯</button>
                 <% end %>

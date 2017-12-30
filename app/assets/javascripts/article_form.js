@@ -48,7 +48,6 @@ $(document).ready(function()
     {
         var all_categories = x;
         var current_categories = y;
-        // console.log([current_categories , all_categories]);
 
         function add_options_render( aor_input )
         {   // generate <option> that user can add category
@@ -86,7 +85,6 @@ $(document).ready(function()
 
         function category_label_render( clr_current_cate )
         {   // Generate category labels in article
-            //debugger;
             if ( clr_current_cate.length > 0 )
             {   // If not empty
                 var show_tempelte  = "";
@@ -109,7 +107,6 @@ $(document).ready(function()
 
         function add_category( ac_current_categroies , ac_clicked_dom )
         {   // Add value to current category array, then sort it.
-            //var selected_value = parseInt( $("#select_category option").val() , 10 );
             var selected_value = parseInt( ac_clicked_dom , 10 );
             var not_repeat_in_list = ac_current_categroies.filter(function(c){ return c === selected_value; }).length === 0;
             if( not_repeat_in_list )
