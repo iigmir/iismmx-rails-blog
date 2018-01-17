@@ -31,4 +31,20 @@ module ApplicationHelper
             end
         end
     end
+
+    def devise_message()
+        devise_msg_class = ""
+        devise_msg_text = nil
+        
+        if notice
+            devise_msg_class = "message"
+            devise_msg_text = notice
+        end
+        if alert
+            devise_msg_class = "message error"
+            devise_msg_text = alert
+        end
+
+        content_tag(:p, devise_msg_text, class: devise_msg_class)
+    end
 end
