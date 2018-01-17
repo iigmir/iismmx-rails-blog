@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :category_relations    
     root "articles#index"
-    get '*path' => redirect('/')
+    #get '*path' => redirect('/')
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
