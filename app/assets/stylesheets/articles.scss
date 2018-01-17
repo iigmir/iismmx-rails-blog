@@ -48,22 +48,22 @@
     background-color: #C8102E;
 }
 
+#articles_index main ul li
+{
+    padding-bottom:12px;
+    margin-bottom: 12px;
+    border-bottom:1px dashed #FFFFFF;
+}
+
 @media (min-width:700px)
 {   // RWD service
-    #articles_index ul
+    #articles_index ul li span
     {
-        li
+        padding:1rem;
+        br
         {
-            padding-bottom:12px;
-            margin-bottom: 12px;
-            border-bottom:1px dashed #FFFFFF;
-
-            span
-            {
-                padding:1rem;
-            }
+            display:none;
         }
     }
-    li span br{ display:none; }
     article .article_context{ padding-left: 2rem; }
 }

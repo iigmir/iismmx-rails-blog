@@ -5,10 +5,10 @@
 <main class="row align-center">
     <ul class="col col-12 unstyled">
     <% @articles.each do |a| %>
-        <li>
-            <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
-            <span> Created: <%= a.created_at %>,<br/> Last updated: <%= a.updated_at %> </span>
-        </li>
+    <li>
+        <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>
+        <span> 建立：<%= a.created_at %><br/> 最後更新：<%= a.updated_at %> </span>
+    </li>
     <% end %>
     </ul>
     <div class="text-center"> <%= will_paginate @articles %> </div>
