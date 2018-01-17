@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
     def show
         @article = Article.find_by_id(params[:id])
         @markdown = Redcarpet::Markdown.new( Redcarpet::Render::HTML.new(filter_html: false) , )
+        # If article does not exist, return 404
+        raise ActionController::RoutingError.new('Not Found') if @article.blank?
     end
 
     # C for CRUD
@@ -36,7 +38,12 @@ class ArticlesController < ApplicationController
         redirect_to articles_path
     end
 
-    before_filter :check_for_cancel, :only => [:create, :update]
+    def not_found
+        # 404
+        raise ActionController::RoutingError.new('Not Found')
+    end
+
+    before_action :check_for_cancel, :only => [:create, :update]
     def check_for_cancel
         if params[:commit] == "Cancel"
             redirect_to articles_path
