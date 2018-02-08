@@ -4,6 +4,10 @@ class ArticlesController < ApplicationController
     # R for CRUD
     def index
         @articles = Article.order(id: :desc).paginate(:page => params[:page], :per_page => 10 )
+        respond_to do |format|
+            format.html { render :index }  
+            format.atom
+        end
     end
     def show
         @article = Article.find_by_id(params[:id])

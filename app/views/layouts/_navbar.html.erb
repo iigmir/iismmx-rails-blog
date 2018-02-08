@@ -19,6 +19,9 @@
             <%= link_to categories_path do %>
                 <%= fa_icon "tags" %>
             <% end %>
+            <%= link_to root_url + "articles.atom" do %>
+                <%= fa_icon "rss" %>
+            <% end %>
             <%= login_and_out() %>
         </div>
     </div>
