@@ -1,18 +1,15 @@
 atom_feed({'xml:lang' => 'zh-TW'}) do |feed|
     feed.title("露比的銳思")
     feed.subtitle("立志寫出連露比也看得懂的東西")
-    #feed.link( root_url + "articles.atom" )
     feed.updated(@articles[0].created_at) if @articles.length > 0
     feed.author do |author|
         author.name("iismmx")
         author.email("roc120j@gmail.com")
     end
-
     @articles.each do |article|
         feed.entry(article) do |entry|
-            summary = article.context.slice(0...20) + "..."
+            summary = article.context.slice(0...150) + "..."
             web_url = articles_url(article.id)
-            #byebug
             # Feed info
             entry.title article.title
             entry.summary summary
