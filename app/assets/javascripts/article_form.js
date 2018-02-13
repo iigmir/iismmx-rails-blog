@@ -101,6 +101,7 @@ $(document).ready(function()
             else
             {
                 $( "article .category .label_view" ).html(nothing_here( "分類" ));
+                $( "#select_category ul.label_view" ).html( "<li>"+nothing_here( "分類" )+"</li>" );
             }
             return;
         }
@@ -150,6 +151,7 @@ $(document).ready(function()
                 },
                 error: function(jqXHR, textStatus, errorThrown)
                 {
+                    $('#select_category').modal('close');
                     alert("資料更新失敗！");
                     $("div.ajax-waiting").addClass("hide");
                     console.log([jqXHR, textStatus, errorThrown]);
@@ -158,6 +160,7 @@ $(document).ready(function()
                 {
                     $("#select_category .warning.message").addClass("hide");
                     $("div.ajax-waiting").addClass("hide");
+                    $('#select_category').modal('close');
                     alert("資料傳送成功！");
                     get_all_categories();
                 }
@@ -173,6 +176,7 @@ $(document).ready(function()
         });
         $("#select_category .label_view .remove_request").click(function(ev) {
             delete_category(ev,current_categories);
+            return;
         });
         $("#select_category button.save").click(function() {
             category_ajax(current_categories);
