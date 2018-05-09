@@ -2,8 +2,8 @@
     <p class="text-center">你好，請問想<a class="text-center" href="/articles/new">寫新文章</a>嗎？</p>
 <% end %>
 
-<main class="row align-center">
-    <ul class="col col-12 unstyled">
+<main>
+    <ul style="list-style:none;">
     <% @articles.each do |a| %>
     <li>
         <h2> <%= link_to a.title, article_path(a.id) ,method: :get  %> </h2>

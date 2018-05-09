@@ -37,30 +37,40 @@
 <div id="my-modal" class="modal-box hide">
     <div class="modal">
         <span class="close"></span>
-        <div class="modal-header">Modal Header</div>
-        <div class="modal-body">Modal</div>
+        <div class="modal-header">編輯連結</div>
+        <div class="modal-body">等待中...</div>
     </div>
 </div>
 <%= content_for :js_custom do %>
 <script>
-$('[data-target="#my-modal"]').click(function()
+document.querySelectorAll('a[data-target="#my-modal"]').forEach(element =>
 {
-    var target_url = $(this)[0].dataset.userAction;
-    $.ajax
-    ({
-        url: target_url,
-        success: function( data , stat, jqxr )
+    element.addEventListener( "click" , (e) =>
+    {
+        let modal_body = document.querySelector("#my-modal .modal-body");
+        let ajax_api = e.currentTarget.dataset.userAction;
+        let request = new XMLHttpRequest();
+        request.open( "GET" , ajax_api , true);
+        request.onload = () =>
         {
-            $("#my-modal .modal-body").html(data);
-        },
-        error: function( data , stat, jqxr )
+            if (request.status >= 200 && request.status < 400)
+            {
+                modal_body.innerHTML = request.responseText;
+            }
+            else
+            {   // We reached our target server, but it returned an error
+                modal_body.innerHTML = `<p> Error encounter :( </p> <p>${request.responseText}</p>`;
+                console.error( request );
+            }
+        };
+        request.onerror = () =>
         {
-            alert("ERROR");
-            console.log(data);
-            console.log(stat);
-            console.log(jqxr);
-        },
-    });
+            // There was a connection error of some sort
+            modal_body.innerHTML = `<p> Error encounter :( </p> <p>${request.responseText}</p>`;
+            console.error( request );
+        };
+        request.send();
+    }, false );
 });
 </script>
 <% end %>
