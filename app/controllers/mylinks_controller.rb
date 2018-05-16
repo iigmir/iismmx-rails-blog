@@ -12,6 +12,7 @@ class MylinksController < ApplicationController
 
   # R
   def index
+    @html_title = "連結"
     @links = Mylink.order(id: :asc)
   end
 

@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
     end
 
     def index
+        @html_title = "標籤"
         @new_cata = Category.new
         tags = Category.all
         respond_to do |format|
