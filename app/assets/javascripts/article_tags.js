@@ -1,83 +1,54 @@
-$(document).ready(function()
+function ajax_fail( hidden_html , error_input )
 {
-    $.ajax
-    ({
-        url: "/categories.json",
-        dataType: "json",
-        error: function(jqXHR, textStatus, errorThrown)
-        {
-            $("div.index.ajaxfail").removeClass("hide");
-            console.log([jqXHR, textStatus, errorThrown]);
-            return;
-        },
-        success: function(data) { init_render( data );return; }
-    });
+    document.querySelector( hidden_html ).classList.remove("hide");
+    console.error( error_input );
+    return;
+}
 
-    function init_render( ir_input )
+window.onload = function()
+{
+    fetch("/categories.json").then( (response) =>
     {
-        var btn_curr = "";
-        
-        ir_input.forEach(function( rgo_input )
+        if( response.ok ) { return response.json(); }
+        throw new Error('Network response was not ok.');
+    }).catch( (error) => ajax_fail( "div.index.ajaxfail" , error ) )
+    .then( ( tag_api ) =>
+    {   // Main
+        let btn_curr = "";
+        document.querySelector(".ajax-inline-waiting").classList.add("hide");
+        tag_api.forEach( ( rgo_input ) =>
         {
-            var btn_tmpdata, btn_tmpview, btn_html_dataset;
+            let btn_tmpdata, btn_tmpview, btn_html_dataset;
             btn_tmpdata = {
                 idnum: "/categories/" + rgo_input.id,
                 value: rgo_input.tag_name
             };
-
             btn_tmpview = '<button class="button" data-component="modal" data-target="#articles_modal" data-render-api='
             + btn_tmpdata.idnum + ">" + btn_tmpdata.value + "</button>";
             return btn_curr += btn_tmpview;
         });
-        
-        $("#render_view").html(btn_curr);
-
+        document.querySelector("#render_view").innerHTML = btn_curr;
         $('#render_view .button').click(function (event)
-        {   // What the fucking AJAX...Fucking work in fucking AJAX?
-            var clicked_value = event.target.innerText;
-            var render_api = event.target.dataset.renderApi;
-            var help_text = "以下文章內容與" + clicked_value + "有關：";
-            
-            $( "#articles_modal .help_text" ).text( help_text );
-            $( "#articles_modal .clicked_value" ).text( clicked_value + " 的分類" );
+        {
+            let click_value = event.target.innerText;
+            let render_api  = event.target.dataset.renderApi;
+            document.querySelector("#articles_modal .help_text").innerText = "以下文章內容與" + click_value + "有關：";
+            document.querySelector("#articles_modal .clicked_value").innerText = click_value + " 的分類";
+            document.querySelector("#articles_modal .clicked_value").innerText = click_value + " 的分類";
             $( '#articles_modal a.button[data-method="delete"]' ).attr( "href" , render_api );
 
-            $.ajax
-            ({
-                url: render_api,
-                dataType: "json",
-                error: function(jqXHR, textStatus, errorThrown)
-                {
-                    $("div.show.ajaxfail").removeClass("hide");
-                    console.log([jqXHR, textStatus, errorThrown]);
-                    return;
-                },
-                success: function(data) {
-                    catagroy_render( data );
-                    //debugger;
-                    return;
-                }
+            fetch( render_api ).then( (response) =>
+            {
+                if( response.ok ) { return response.json(); }
+                throw new Error("Network response was not ok");
+            }).catch( (error) => ajax_fail( "div.index.ajaxfail" , error ) )
+            .then( ( catagroy_api ) =>
+            {
+                let has_article = catagroy_api.length > 0;
+                let render_templete = has_article ? "" : "<li> 目前還沒有屬於這個分類的條目 ＠＠ </li>"
+                catagroy_api.forEach( ( rgo_input ) => render_templete += "<li><a href='/articles/" +rgo_input.id+ "'>" +rgo_input.title+ "</a></li>" );
+                $( "#articles_modal .render_texts" ).html( render_templete );
             });
         });
-
-        return;
-    }
-
-    function catagroy_render( cr_input )
-    {
-        var render_templete = "";
-        if ( cr_input.length > 0 )
-        {
-            cr_input.forEach(function( rgo_input )
-            {
-                render_templete += "<li><a href='/articles/" +rgo_input.id+ "'>" +rgo_input.title+ "</a></li>";
-            });
-        }
-        else
-        {
-            render_templete = "<li> 目前還沒有屬於這個分類的條目 ＠＠ </li>";
-        }
-        $( "#articles_modal .render_texts" ).html( render_templete );
-        return;
-    }
-});
+    });
+}

@@ -5,6 +5,12 @@
     100%{background-position:48% 0%}
 }
 
+@keyframes slidein
+{
+    from{margin-left:0%}
+    to{margin-left:10%}
+}
+
 body
 {
     background-color: #d6ccca;
@@ -71,6 +77,17 @@ pre
         }
     }
 }
+
+/* .ajax-inline-waiting
+{
+    background: radial-gradient( #FFac00 , #FFFFFF );
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 3rem;
+    //animation: 2s linear 1s infinite alternate none running slidein;
+} */
 
 .click.close,
 .click.fa-times
